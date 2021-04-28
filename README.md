@@ -1,2 +1,2 @@
-# samples-freebsd
-Config samples for FreeBSD
+# Configuration samples for FreeBSD
+Based on my dummy experience.
