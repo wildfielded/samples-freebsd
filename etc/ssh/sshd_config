@@ -1,0 +1,66 @@
+AllowUsers			admin1 superadmin2 techadmin3
+AllowGroups			wheel
+
+AddressFamily			inet
+AllowAgentForwarding		no
+AllowTcpForwarding		no
+AllowStreamLocalForwarding	no
+Banner				none
+ChallengeResponseAuthentication	yes
+ChrootDirectory			none
+ClientAliveCountMax		600
+ClientAliveInterval		60
+Compression			delayed
+FingerprintHash			sha256
+ForceCommand			none
+GatewayPorts			no
+GSSAPIAuthentication		no
+GSSAPICleanupCredentials	yes
+GSSAPIStrictAcceptorCheck	yes
+HostbasedAuthentication		no
+HostbasedUsesNameFromPacketOnly	no
+IgnoreRhosts			yes
+IgnoreUserKnownHosts		no
+IPQoS				lowdelay
+KbdInteractiveAuthentication	yes
+KerberosAuthentication		no
+KerberosOrLocalPasswd		yes
+KerberosTicketCleanup		yes
+KeyRegenerationInterval		3600
+ListenAddress			0.0.0.0
+LoginGraceTime			120
+LogLevel			INFO
+MaxAuthTries			5
+MaxSessions			10
+MaxStartups			10:50:20
+PasswordAuthentication		yes
+PermitEmptyPasswords		no
+PermitOpen			none
+PermitRootLogin			no
+PermitTunnel			no
+PermitTTY			yes
+PermitUserEnvironment		no
+PermitUserRC			yes
+PidFile				/var/run/sshd.pid
+Port				22
+PrintMotd			no
+Protocol			2
+PubkeyAuthentication		yes
+RekeyLimit			1G 1h
+RhostsRSAAuthentication		no
+RSAAuthentication		yes
+ServerKeyBits			1024
+StrictModes			yes
+SyslogFacility			AUTH
+TCPKeepAlive			yes
+UseDNS				no
+UseLogin			no
+UsePAM				yes
+UsePrivilegeSeparation		sandbox
+VersionAddendum			bI6AHTA-20201010
+X11DisplayOffset		10
+X11Forwarding			no
+X11UseLocalhost			no
+XAuthLocation			none
+
+###########################################################################
