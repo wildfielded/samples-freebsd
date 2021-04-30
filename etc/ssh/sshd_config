@@ -1,3 +1,6 @@
+#	$OpenBSD: sshd_config,v 1.98 2016/02/17 05:29:04 djm Exp $
+#	$FreeBSD: releng/11.1/crypto/openssh/sshd_config 311915 2017-01-11 05:56:40Z delphij $
+
 AllowUsers			admin1 superadmin2 techadmin3
 AllowGroups			wheel
 
