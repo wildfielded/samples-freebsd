@@ -3,6 +3,7 @@
 
 alias ll	'ls -la | more'
 
+#####=====----- Trivials -----=====#####
 alias sr	shutdown -r now
 alias sp	shutdown -p now
 

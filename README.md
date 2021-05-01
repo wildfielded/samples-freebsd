@@ -3,7 +3,7 @@ Based on my dummy experience.
 1. Screen text mode    
 [**`/boot/loader.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/boot/loader.conf) - Console in text-mode    
 ----
-2. CSHRC....
+2. cshrc    
 [**`/root/.cshrc`**](https://github.com/wildfielded/samples-freebsd/blob/master/root/.cshrc)    
 [**`/usr/home/ded/.cshrc`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/home/ded/.cshrc) - Some useful tuning, when working in **tcsh**    
 ----
