@@ -17,8 +17,8 @@ setenv	EDITOR	/usr/bin/ee
 setenv	PAGER	/usr/bin/more
 
 #####=====----- Example for access through Proxy with authorization -----=====#####
-setenv	FTP_PROXY	'http://DOMAIN\AdmIN:passwd@172.31.54.190:9090'
-setenv	HTTP_PROXY	'http://DOMAIN\AdmIN:passwd@172.31.54.190:9090'
+setenv	FTP_PROXY	'http://DOMAIN\AdmIN:passwd@192.168.192.168:3128'
+setenv	HTTP_PROXY	'http://DOMAIN\AdmIN:passwd@192.168.192.168:3128'
 
 if ($?prompt) then
 	# An interactive shell -- set some stuff up
