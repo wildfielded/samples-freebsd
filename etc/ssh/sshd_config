@@ -46,6 +46,7 @@ PermitUserEnvironment		no
 PermitUserRC			yes
 PidFile				/var/run/sshd.pid
 Port				22
+Port				2222
 PrintMotd			no
 Protocol			2
 PubkeyAuthentication		yes
