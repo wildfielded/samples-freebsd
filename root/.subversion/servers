@@ -1,0 +1,4 @@
+http-proxy-host = 192.168.192.168
+http-proxy-port = 3128
+http-proxy-username = DOMAIN\UNIXproxyuser
+http-proxy-password = password123
