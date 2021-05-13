@@ -1,0 +1,57 @@
+#!/bin/sh -
+#####=====----- Configured by sTALK_specTrum -----=====#####
+
+if [ -z "${source_rc_confs_defined}" ] ; then
+    if [ -r /etc/defaults/rc.conf ] ; then
+        . /etc/defaults/rc.conf
+        source_rc_confs
+    elif [ -r /etc/rc.conf ] ; then
+        . /etc/rc.conf
+    fi
+fi
+
+setup_loopback () {
+    ${fwcmd} add 100 allow ip from any to any via lo0
+    ${fwcmd} add 200 deny ip from any to 127.0.0.0/8
+    ${fwcmd} add 300 deny ip from 127.0.0.0/8 to any
+}
+
+if [ -n "${1}" ] ; then
+    firewall_type="${1}"
+fi
+
+. /etc/rc.subr
+. /etc/network.subr
+
+case ${firewall_quiet} in
+    [Yy][Ee][Ss])
+        fwcmd='/sbin/ipfw -q'
+    ;;
+    *)
+        fwcmd='/sbin/ipfw'
+    ;;
+esac
+
+${fwcmd} -f flush
+${fwcmd} -f pipe flush
+${fwcmd} -f queue flush
+
+#########################################
+#####=====----- VARIABLES -----=====#####
+#########################################
+
+#######################################
+#####=====----- DEFAULT -----=====#####
+#######################################
+setup_loopback
+
+case ${firewall_type} in
+####################################
+#####=====----- OPEN -----=====#####
+####################################
+    [Oo][Pp][Ee][Nn])
+        ${fwcmd} add 65500 allow ip from any to any
+    ;;
+esac
+
+###########################################################################
