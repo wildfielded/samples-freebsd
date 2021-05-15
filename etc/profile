@@ -1,0 +1,13 @@
+# $FreeBSD$
+#
+# System-wide .profile file for sh(1).
+#
+
+FTP_PROXY=http://UNIXproxyuser:password123@192.168.192.168:3128
+export FTP_PROXY
+HTTP_PROXY=http://UNIXproxyuser:password123@192.168.192.168:3128
+export HTTP_PROXY
+HTTPS_PROXY=http://UNIXproxyuser:password123@192.168.192.168:3128
+export HTTPS_PROXY
+
+###########################################################################
