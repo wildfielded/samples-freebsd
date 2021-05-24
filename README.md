@@ -25,6 +25,7 @@ Based on my dummy experience.
 [**`/usr/src/sys/amd64/conf/BSDSRV`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/src/sys/amd64/conf/BSDSRV) - Kernel config for 11.2 (bare metal)    
 ----
 7. One image for many different servers    
-Let's suppose, for instance, that we have 4 servers with identical file systems but different functional.    
+Let's suppose, for instance, that we have 5 servers with different functional (external - primary, secondary, tester; internal - primary, secondary).    
+But they filesystems are identical (except of some logs, tmp-files, etc.)    
 [**`/etc/rc.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/rc.conf) - rc.conf    
 ----
