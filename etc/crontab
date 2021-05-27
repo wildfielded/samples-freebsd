@@ -1,0 +1,48 @@
+# /etc/crontab - root's crontab for FreeBSD
+#
+# $FreeBSD$
+#
+SHELL=/bin/sh
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
+HOME=/var/log
+MAILTO=ded@wildfielded.site
+#
+#minute	hour	mday	month	wday	who	command
+#
+# Save some entropy so that /dev/random can re-seed on boot.
+# */11	*	*	*	*	operator /usr/libexec/save-entropy
+#
+# Rotate log files every hour, if necessary.
+# 0	*	*	*	*	root	newsyslog
+0	*	*	*	*	root	[ -f /BASTION -o -f /FORT -o -f /FORTRESS ] && /usr/sbin/newsyslog -f /etc/newsyslog.conf_BFP
+0	*	*	*	*	root	[ -f /CASTLE1 -o -f /CASTLE2 ] && /usr/sbin/newsyslog -f /etc/newsyslog.conf_12
+#
+# Perform daily/weekly/monthly maintenance.
+1	3	*	*	*	root	periodic daily
+15	4	*	*	6	root	periodic weekly
+30	5	1	*	*	root	periodic monthly
+#
+# Adjust the time zone if the CMOS clock keeps local time, as opposed to
+# UTC time.  See adjkerntz(8) for details.
+1,31	0-5	*	*	*	root	adjkerntz -a
+##### NTPDATE
+24	*	*	*	*	root	[ -f /BASTION ] && /usr/sbin/ntpdate ntp.wildfielded.site >> /var/log/ntpdate.log 2>&1
+26	*	*	*	*	root	[ -f /FORT -o -f /FORTRESS ] && /usr/sbin/ntpdate ntp.wildfielded.site >> /var/log/ntpdate.log 2>&1
+28	*	*	*	*	root	[ -f /CASTLE1 -o f /CASTLE2 ] && /usr/sbin/ntpdate ntp.wildfielded.site >> /var/log/ntpdate.log 2>&1
+##### SQUID
+0	0	1	*	*	root	[ -f /BASTION ] && /usr/local/sbin/squid -k rotate 2>&1 1>/dev/null
+##### CISCO CONFIG ROTATE
+16	22	*	*	*	root	[ -f /BASTION ] && /bin/sh /root/bin/filerot/confrot_B 2>&1 1>/dev/null
+18	22	*	*	*	root	[ -f /CASTLE1 ] && /bin/sh /root/bin/filerot/confrot_1 2>&1 1>/dev/null
+##### RSYNC
+2	2	*	*	*	root	[ -f /FORT ] && /usr/local/bin/rsync -qrlpogtW --fileflags --delete --force-delete rsync://bastion.wildfielded.site/ETC /etc/ 2>&1 1>/dev/null
+4	2	*	*	*	root	[ -f /FORT ] && /usr/local/bin/rsync -qrlpogtW --fileflags --delete --force-delete rsync://bastion.wildfielded.site/ROOT /root/ 2>&1 1>/dev/null
+14	23	*	*	*	root	[ -f /FORT ] && /usr/local/bin/rsync -qrlpogtW --fileflags --delete --force-delete rsync://bastion.wildfielded.site/TFTPBOOT /tftpboot/ 2>&1 1>/dev/null
+6	2	*	*	*	root	[ -f /FORT ] && /usr/local/bin/rsync -qrlpogtW --fileflags --delete --force-delete rsync://bastion.wildfielded.site/USR_HOME /usr/home/ 2>&1 1>/dev/null
+8	2	*	*	*	root	[ -f /FORT ] && /usr/local/bin/rsync -qrlpogtW --fileflags --delete --force-delete rsync://bastion.wildfielded.site/USR_LOCAL_ETC /usr/local/etc/ 2>&1 1>/dev/null
+14	21	1	*	*	root	[ -f /FORT ] && /usr/local/bin/rsync -qrlpogtW --fileflags --delete --force-delete rsync://bastion.wildfielded.site/USR_LOCAL_WWW_APACHE24 /usr/local/www/apache24/ 2>&1 1>/dev/null
+10	2	*	*	*	root	[ -f /FORT ] && /usr/local/bin/rsync -qrlpogtW --fileflags --delete --force-delete --filter='exclude *.meta' --filter='exclude *.png' --filter='exclude *.html' rsync://bastion.wildfielded.site/USR_LOCAL_WWW_APACHE24/data/adm/mrtg/ /usr/local/www/apache24/data/adm/mrtg/ 2>&1 1>/dev/null
+12	2	*	*	*	root	[ -f /FORT ] && /usr/local/bin/rsync -qrlpogtW --fileflags --delete --force-delete rsync://bastion.wildfielded.site/VAR_CRON_TABS /var/cron/tabs/ 2>&1 1>/dev/null
+15	0	*	*	*	root	[ -f /FORT ] && /usr/local/bin/rsync -qrlpogtW --fileflags --delete --force-delete rsync://bastion/VAR_MAIL /var/mail/ 2>&1 1>/dev/null
+14	2	*	*	*	root	[ -f /FORT ] && /usr/local/bin/rsync -qrlpogtW --fileflags --delete --force-delete --filter='exclude /slave*' rsync://bastion.wildfielded.site/VAR_NAMED_ETC_NAMEDB /var/named/etc/namedb/ 2>&1 1>/dev/null
+###########################################################################
