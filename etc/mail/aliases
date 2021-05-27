@@ -1,0 +1,33 @@
+# $FreeBSD$
+#	@(#)aliases	5.3 (Berkeley) 5/24/90
+#
+#  Aliases in this file will NOT be expanded in the header from
+#  Mail, but WILL be visible over networks.
+#
+#	>>>>>>>>>>	The program "newaliases" must be run after
+#	>> NOTE >>	this file is updated for any changes to
+#	>>>>>>>>>>	show through to sendmail.
+
+#####=====----- ROOT MAIL FOR ADMINS -----=====#####
+root:	postmaster
+
+#####=====----- Basic system aliases -- these MUST be present -----=====#####
+MAILER-DAEMON:	postmaster
+postmaster:	ded@wildfielded.site
+
+#####=====----- General redirections for pseudo accounts -----=====#####
+bind:	postmaster
+smmsp:	postmaster
+
+#####=====----- NETWORK OPERATIONS MAILBOX NAMES -----=====#####
+abuse:	postmaster
+noc:	postmaster
+security:	postmaster
+
+#####=====----- SUPPORT MAILBOX NAMES FOR SPECIFIC INTERNET SERVICES -----=====#####
+hostmaster:	postmaster
+dnsmaster:	postmaster
+webmaster: 	root
+www: 		webmaster
+
+###########################################################################

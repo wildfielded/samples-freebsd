@@ -34,7 +34,7 @@ But they filesystems are identical (except of some logs, tmp-files, etc.)
 [**`/etc/rc.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/rc.conf) - rc.conf    
 ----
 9. **Sendmail**... Yes, I can!    
-[**`/etc/mail/`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/mail) - Given configs are only for bastion host    
+[**`/etc/mail/`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/mail) - Given configs are only for **bastion** host    
 ----
 10. Unsorted    
 [**`/etc/adduser.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/adduser.conf) - Template for adding simple mailuser    
