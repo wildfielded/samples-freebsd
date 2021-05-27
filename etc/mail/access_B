@@ -1,0 +1,37 @@
+# $FreeBSD$
+#
+# Mail relay access control list.  Default is to reject mail unless the
+# destination is local, or listed in /etc/mail/local-host-names
+
+Connect:[127.0.0.1]	OK
+Connect:10.10.3		RELAY
+Connect:10.10.4		RELAY
+Connect:172.16.16	RELAY
+Connect:172.31.240	RELAY
+
+#####=====----- New connections per ConnectionRateWindowSize=10s -----=====#####
+ClientRate:127.0.0.1	0
+ClientRate:10.10.4	0
+ClientRate:		10
+
+#####=====----- Open connections -----=====#####
+ClientConn:127.0.0.1	0
+ClientConn:10.10.4	0
+ClientConn:		10
+
+#####=====----- Sender-Recipient pair restrictions -----=====#####
+Compat:spamer@sexx.test<@>ded@wildfielded.site	DISCARD
+Compat:hacker@cool.test<@>ded@wildfielded.site	TEMP:4.7.0:"554 GOD is temporarily unavailable"
+Compat:lamers@lamo.test<@>ded@wildfielded.site	ERROR:5.7.1:"554 We do not accept mail from you"
+
+#####=====----- Greetings pause (default 3000ms) -----=====#####
+GreetPause:127.0.0.1	0
+GreetPause:10.10.4	1000
+GreetPause:172.31.240	1000
+GreetPause:		3000
+
+#####=====----- Skip check_mail and check_relay for recipients -----=====#####
+Spam:khan@	FRIEND
+Spam:dedushka@derevnya.ru
+
+###########################################################################

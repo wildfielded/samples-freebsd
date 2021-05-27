@@ -1,13 +1,13 @@
 # Configuration samples for FreeBSD
 Based on my dummy experience.
-1. Screen text mode    
+1. Screen **text** mode    
 [**`/boot/loader.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/boot/loader.conf) - Console in text-mode    
 ----
 2. **cshrc**    
 [**`/root/.cshrc`**](https://github.com/wildfielded/samples-freebsd/blob/master/root/.cshrc)    
 [**`/usr/home/ded/.cshrc`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/home/ded/.cshrc) - Some useful tuning, when working in **tcsh**    
 ----
-3. Locale    
+3. **Locale**    
 [**`/root/.login_conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/root/.login_conf)    
 [**`/usr/home/ded/.login_conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/home/ded/.login_conf) - Setting up KOI8-R locale    
 ----
@@ -21,15 +21,18 @@ Based on my dummy experience.
 [**`/etc/ssh/ssh_config`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/ssh/ssh_config)    
 [**`/etc/ssh/sshd_config`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/ssh/sshd_config) - It works    
 ----
-6. Inetd sweet Inetd =)    
+6. **Inetd** sweet **Inetd** =)    
 When you temporarily need FTP, TFTP, POP3 without particular daemons,    
 [**`/etc/inetd.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/inetd.conf) - this is for you.    
 ----
-7. Kernel    
+7. **Kernel**    
 [**`/usr/src/sys/amd64/conf/BSDSRV`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/src/sys/amd64/conf/BSDSRV) - Kernel config for 11.2 (bare metal)    
 ----
-8. One image for many different servers    
+8. **One** image for **many** different servers    
 Let's suppose, for instance, that we have 5 servers with different functional (external - primary, secondary, tester; internal - primary, secondary).    
 But they filesystems are identical (except of some logs, tmp-files, etc.)    
 [**`/etc/rc.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/rc.conf) - rc.conf    
+----
+9. **Sendmail**... Yes, I can!
+[**`/etc/mail/`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/mail) - Given configs are only for bastion host    
 ----

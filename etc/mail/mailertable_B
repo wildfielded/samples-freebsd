@@ -1,0 +1,8 @@
+# $FreeBSD$
+#
+# List of domains (possibly wildcarded) and destination mailers
+
+internal.wildfielded.site		esmtp:castle1.wildfielded.site
+.internal.wildfielded.site		esmtp:castle1.wildfielded.site
+
+###########################################################################
