@@ -39,4 +39,5 @@ But they filesystems are identical (except of some logs, tmp-files, etc.)
 10. Unsorted    
 [**`/etc/adduser.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/adduser.conf) - Template for adding simple mailuser    
 [**`/etc/crontab`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/crontab) - Tasks for different servers    
+[**`/etc/devfs.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/devfs.conf) - For workstation and notebook    
 ----
