@@ -43,6 +43,6 @@ MAILTO=ded@wildfielded.site
 14	21	1	*	*	root	[ -f /FORT ] && /usr/local/bin/rsync -qrlpogtW --fileflags --delete --force-delete rsync://bastion.wildfielded.site/USR_LOCAL_WWW_APACHE24 /usr/local/www/apache24/ 2>&1 1>/dev/null
 10	2	*	*	*	root	[ -f /FORT ] && /usr/local/bin/rsync -qrlpogtW --fileflags --delete --force-delete --filter='exclude *.meta' --filter='exclude *.png' --filter='exclude *.html' rsync://bastion.wildfielded.site/USR_LOCAL_WWW_APACHE24/data/adm/mrtg/ /usr/local/www/apache24/data/adm/mrtg/ 2>&1 1>/dev/null
 12	2	*	*	*	root	[ -f /FORT ] && /usr/local/bin/rsync -qrlpogtW --fileflags --delete --force-delete rsync://bastion.wildfielded.site/VAR_CRON_TABS /var/cron/tabs/ 2>&1 1>/dev/null
-15	0	*	*	*	root	[ -f /FORT ] && /usr/local/bin/rsync -qrlpogtW --fileflags --delete --force-delete rsync://bastion/VAR_MAIL /var/mail/ 2>&1 1>/dev/null
+15	0	*	*	*	root	[ -f /FORT ] && /usr/local/bin/rsync -qrlpogtW --fileflags --delete --force-delete rsync://bastion.wildfielded.site/VAR_MAIL /var/mail/ 2>&1 1>/dev/null
 14	2	*	*	*	root	[ -f /FORT ] && /usr/local/bin/rsync -qrlpogtW --fileflags --delete --force-delete --filter='exclude /slave*' rsync://bastion.wildfielded.site/VAR_NAMED_ETC_NAMEDB /var/named/etc/namedb/ 2>&1 1>/dev/null
 ###########################################################################

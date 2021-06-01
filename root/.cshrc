@@ -1,5 +1,4 @@
-# $FreeBSD: releng/11.1/etc/root/dot.cshrc 278616 2015-02-12 05:35:00Z cperciva $
-#
+# $FreeBSD$
 
 alias ll	'ls -la | more'
 
@@ -18,8 +17,9 @@ setenv	EDITOR	/usr/bin/ee
 setenv	PAGER	/usr/bin/more
 
 #####=====----- Example for access through Proxy with authorization -----=====#####
-setenv	FTP_PROXY	'http://DOMAIN\AdmIN:passwd@192.168.192.168:3128'
-setenv	HTTP_PROXY	'http://DOMAIN\AdmIN:passwd@192.168.192.168:3128'
+setenv	FTP_PROXY	'http://UNIXproxyuser:password123@192.168.192.168:3128'
+setenv	HTTP_PROXY	'http://UNIXproxyuser:password123@192.168.192.168:3128'
+setenv	HTTPS_PROXY	'http://UNIXproxyuser:password123@192.168.192.168:3128'
 
 if ($?prompt) then
 	# An interactive shell -- set some stuff up

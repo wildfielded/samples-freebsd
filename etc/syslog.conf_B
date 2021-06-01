@@ -1,0 +1,90 @@
+# $FreeBSD$
+
+#####=====----- General logs dubbing -----=====#####
++@
+console.*					/var/log/console
+!-devd
+*.emerg						*
+!*
+
+*.notice;authpriv.none;mail.crit		/var/log/messages_B
+*.notice;authpriv.none;mail.crit		@fort.wildfielded.site
+
+cron.*						/var/log/cron_B
+cron.*						@fort.wildfielded.site
+
+kern.*						/var/log/kernel_B
+kern.*						@fort.wildfielded.site
+
+*.=debug					/var/log/debug_B
+*.=debug					@fort.wildfielded.site
+
+ftp.*						/var/log/ftp/ftpd_all_B
+ftp.*						@fort.wildfielded.site
+
+ftp.info					/var/log/ftp/xferlog_B
+
+mail.info					/var/log/maillog_B
+mail.info					@fort.wildfielded.site
+
+mail.*						/var/log/security/mail_all_B
+mail.*						@fort.wildfielded.site
+
+security.*					/var/log/security/security_all_B
+security.*					@fort.wildfielded.site
+
+auth.info;authpriv.info				/var/log/security/logins_B
+auth.info;authpriv.info				@fort.bur.so-ups.ru
+
+auth.=notice					/var/log/security/logins_adm_B
+auth.=notice					@fort.wildfielded.site
+
+uucp.=notice					/var/log/backup/backup
+uucp.=notice					@fort.wildfielded.site
+uucp.=err					/var/log/backup/backup
+uucp.=err					@fort.wildfielded.site
+
+#####=====----- FORT logs -----=====#####
++fort
+*.notice;authpriv.none;mail.crit		/var/log/messages_F
+cron.*						/var/log/cron_F
+kern.*						/var/log/kernel_F
+*.=debug					/var/log/debug_F
+ftp.*						/var/log/ftp/ftpd_all_F
+mail.info					/var/log/maillog_F
+mail.*						/var/log/security/mail_all_F
+security.*					/var/log/security/security_all_F
+auth.info;authpriv.info				/var/log/security/logins_F
+auth.=notice					/var/log/security/logins_adm_F
+uucp.=notice					/var/log/backup/backup
+uucp.=err					/var/log/backup/backup
+
+#####=====----- Network equipment logs -----=====#####
+
+#####=====----- Servers logs -----=====#####
+
+#####=====----- Local programs logs -----=====#####
++@
+!devd
+*.notice					/var/log/devd
+!ftpd
+*.info						/var/log/ftp/ftpd
+!sshd
+*.info						/var/log/security/logins_adm_B
+!inetd
+*.*						/var/log/security/inetd
+!ipfw
+*.*						/var/log/security/ipfw
+!ppp
+*.*						/var/log/ppp/ppp
+!proftpd
+*.*						/var/log/ftp/proftpd
+!named
+*.*						/var/log/named/named
+
+!*
+
+include						/etc/syslog.d
+include						/usr/local/etc/syslog.d
+
+###########################################################################
