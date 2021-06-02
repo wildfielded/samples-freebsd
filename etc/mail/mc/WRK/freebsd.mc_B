@@ -28,6 +28,7 @@ FEATURE(`use_cw_file')
 FEATURE(`nouucp', `reject')
 FEATURE(`nocanonify', `canonify_hosts')
 
+dnl ----- Masquerading -----
 MASQUERADE_AS(`wildfielded.site')
 MASQUERADE_DOMAIN_FILE(`/etc/mail/masquerade-domains_B')
 MASQUERADE_EXCEPTION_FILE(`/etc/mail/no-masquerade-domains_B')
@@ -50,6 +51,14 @@ define(`confMAX_ALIAS_RECURSION', `5')
 define(`HELP_FILE', `/etc/mail/helpfile')
 define(`QUEUE_DIR', `/var/spool/mqueue')
 define(`MSP_QUEUE_DIR', `/var/spool/clientmqueue')
+
+dnl ----- Milters -----
+MAIL_FILTER=(`sentinel', `S=unix:/var/spool/sentinel/sentinel.sock, T=C:20s;S:30s;R:2m;E:5m')
+MAIL_FILTER(`kasfilter', `S=unix:/var/run/kas-milter.sock, T=C:20s;S:30s;R:2m;E:5m')
+MAIL_FILTER(`kavmilter', `S=unix:/var/db/kav/5.6/kavmilter/run/kav-milter.sock, T=C:1m;S:3m;R:5m;E:10m')
+define(`confINPUT_MAIL_FILTERS', `sentinel, kasfilter, kavmilter')
+define(`confMILTER_LOG_LEVEL', `8')
+
 define(`confMAX_MESSAGE_SIZE', `52428800')
 define(`confMAX_RCPTS_PER_MESSAGE', `10')
 define(`confBAD_RCPT_THROTTLE', `5')
@@ -77,6 +86,7 @@ define(`CONFPID_FILE', `/var/run/sendmail.pid')
 dnl ##################################################
 
 dnl #####define(`SMART_HOST', `bastion.wildfielded.site')
+dnl #####define(`confFALLBACK_SMARTHOST', `fort.wildfielded.site')
 
 define(`confCW_FILE', `-o /etc/mail/local-host-names_B')
 
@@ -87,3 +97,19 @@ define(`confNO_RCPT_ACTION', `add-to-undisclosed')
 define(`confPRIVACY_FLAGS', `authwarnings,noexpn,novrfy')
 MAILER(local)
 MAILER(smtp)
+
+LOCAL_RULESETS
+
+SChck_from_localdom
+# IPs allowed for envelope From:*wildfielded.site
+R127.0.0.$*				$@ OK
+R10.20.30.$*				$@ OK
+R192.168.192.$*				$@ OK
+R172.16.31.$*				$@ OK
+R$*					$#error $@ 5.7.1 $: "550 Access denied (Host "$&{client_addr}" is not authorized for sending mail from "$&{f}")"
+
+SLocal_check_mail
+R$*					$: $1 $| $>3 $1
+R$* $| $* < @wildfielded.site. > $*	$: $1 $| $>"Chck_from_localdom" $&{client_addr}
+R$* $| $#$*				$#$2
+R$* $| $*				$: $1
