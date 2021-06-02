@@ -41,6 +41,7 @@ But they filesystems are identical (except of some logs, tmp-files, etc.)
 ----
 9. **Sendmail**... Yes, I can!    
 [**`/etc/mail/`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/mail) - All the given configs are only for one external server    
+[**`/etc/mail/sentinel/sentinel.cf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/mail/sentinel/sentinel.cf) - Very old and simple mailfilter    
 ----
 10. Unsorted    
 [**`/etc/adduser.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/adduser.conf) - Template for adding simple mailuser    

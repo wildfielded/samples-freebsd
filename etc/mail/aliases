@@ -22,4 +22,7 @@ dnsmaster:	postmaster
 webmaster: 	root
 www: 		webmaster
 
+#####=====----- MAILLISTS -----=====#####
+team:	:include:	/etc/mail/maillists/team
+
 ###########################################################################

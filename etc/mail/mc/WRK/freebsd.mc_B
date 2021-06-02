@@ -53,7 +53,7 @@ define(`QUEUE_DIR', `/var/spool/mqueue')
 define(`MSP_QUEUE_DIR', `/var/spool/clientmqueue')
 
 dnl ----- Milters -----
-MAIL_FILTER=(`sentinel', `S=unix:/var/spool/sentinel/sentinel.sock, T=C:20s;S:30s;R:2m;E:5m')
+MAIL_FILTER(`sentinel', `S=unix:/var/spool/sentinel/sentinel.sock, T=C:20s;S:30s;R:2m;E:5m')
 MAIL_FILTER(`kasfilter', `S=unix:/var/run/kas-milter.sock, T=C:20s;S:30s;R:2m;E:5m')
 MAIL_FILTER(`kavmilter', `S=unix:/var/db/kav/5.6/kavmilter/run/kav-milter.sock, T=C:1m;S:3m;R:5m;E:10m')
 define(`confINPUT_MAIL_FILTERS', `sentinel, kasfilter, kavmilter')

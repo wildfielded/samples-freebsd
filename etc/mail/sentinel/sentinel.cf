@@ -1,0 +1,57 @@
+[global]
+tmp:/tmp
+log:/var/log/sentinel/sentinel.log
+debug:/var/log/sentinel/sentinel.debug
+user:smmsp
+group:smmsp
+max_nofiles:512
+##### max_soconn:20
+max_parse_txt:204800
+
+[hosts]
+
+[headers]
+
+From:	from_ALL_COM:from_ALL_COM,!to_FORALL,!to_ASD:accept:/com\-pany\.test/i
+	from_BUT:from_BUT:accept:/@but\.com\-pany\.test/i
+	from_SIS:from_SIS,!to_FORALL,!to_ASD:accept:/sis\.com\-pany\.test/i
+	from_ENER:from_ENER,!to_FORALL,!to_ASD:accept:/ener\.test/i
+
+	from_yandex:from_yandex,!to_FORALL,!to_ASD:accept:/@yandex\.ru$/i
+	from_mailru:from_mailru,!to_FORALL,!to_ASD:accept:/@mail\.ru$/i
+
+To:	to_FORALL:to_FORALL:null:/forall@/i
+	to_FORALL_OUT:to_FORALL_OUT,!from_BUT:reject:/forall@but\.com\-pany\.test$/i
+	to_ASD:to_ASD:null:/asd_(cen|sub)@but\.com\-pany\.test|sdt_(cen|sub)@but\.com\-pany\.test/i
+	to_ASD_OUT:to_ASD_OUT,!from_BUT:reject:/asd_(cen|sub)@but\.com\-pany\.test|sdt_(cen|sub)@but\.com\-pany\.test/i
+
+	to_SERVER:to_SERVER:null:/dnsmaster@|hostmaster@|^mailer\-daemon@|^noc@|postmaster@|root@/i
+	to_SERVICE:to_SERVICE:null:/^backup@|virzmaster@|^forall@|^kavmaster@|^spam@/i
+	to_TESTS:to_TESTS:null:/testmail@|mika|^nick@|^test@/i
+	to_HQ:to_HQ:null:/usr1@|usr2@|usr3@|usr4@/i
+	to_DEP1:to_DEP1:null:/usr10@|usr11@|usr12@|usr13@/i
+	to_DEP2:to_DEP2:null:/usr20@|usr21@|usr22@/i
+	to_MISC:to_MISC:null:/usr30@|usr31@|usr32@|usr33@/i
+	to_DEP3:to_DEP3:null:/usr40@|usr41@|usr42@|usr43@|usr44@/i
+
+	to_NOT_BUT:to_NOT_BUT,!to_SERVER,!to_SERVICE,!to_TESTS,!to_HQ,!to_DEP1,!to_DEP2,!to_MISC,!to_DEP3:reject:/\@but\.com\-pany\.test$/i
+
+[attachments]
+vir01:vir01:virus:/screensaver|\.scr$|\.pif$|\.vb$|\.vbs$/i
+
+[mime types]
+
+[body]
+
+[actions]
+spam:reject:The message was classified as SPAM.
+savespam:quarantine:/var/log/sentinel/savespam/%Y%m%d
+justsave:quarantine:/var/log/sentinel/quarantine/%Y%m%d
+nousers:reject:No such user now
+reject:reject:This message is FORBIDDEN due to our E-Mail policy
+virus:reject:The attachment of the message was classified as either VIRUS or just unsafe
+discard:discard
+accept:accept
+null:null
+
+##########################################################################
