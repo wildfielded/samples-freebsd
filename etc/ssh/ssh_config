@@ -2,12 +2,27 @@
 #	$FreeBSD: releng/11.1/crypto/openssh/ssh_config 311915 2017-01-11 05:56:40Z delphij $
 
 #####=====----- For some old Cisco IOS -----=====#####
-Host					oldcisco.local.dom
+Host					oldcisco1.local.wildfielded.site
+    KexAlgorithms			+diffie-hellman-group1-sha1
+
+Host					oldcisco2.local.wildfielded.site
+    Ciphers				aes256-cbc,aes192-cbc,aes128-cbc,3des-cbc
     KexAlgorithms			+diffie-hellman-group1-sha1
 
 #####=====----- For some dumb switches -----=====#####
 Host					192.168.192.*
     HostKeyAlgorithms			+ssh-dss
+
+#####=====----- For Git accounts -----=====#####
+Host					wildfielded.github.com
+    Hostname				github.com
+    User				git
+    IdentityFile			~/.ssh/rsa_wilded
+
+Host					sshbuser.github.com
+    Hostname				github.com
+    User				git
+    IdentityFile			~/.ssh/rsa_sshbuser
 
 #####=====----- Works with almost all my cases -----=====#####
 Host					*
