@@ -1,0 +1,27 @@
+; #####=====----- 172.16.172.0/24 Reverse zone -----=====#####
+
+$TTL	10800
+$ORIGIN	172.16.172.in-addr.arpa.
+
+@	IN	SOA	wildfielded.site.	dnsmaster.wildfielded.site.	(
+			2029062014	; Serial
+			86400		; Refresh (1d)
+			10800		; Retry (3h)
+			10886400	; Expire (18w)
+			10800		; Negative cache TTL (3h)
+			)
+
+@	IN	NS	ns.wildfielded.site.
+	IN	NS	ns2.wildfielded.site.
+
+$GENERATE	0-9	$	IN	PTR	host00$.wildfielded.site.
+$GENERATE	10-99	$	IN	PTR	host0$.wildfielded.site.
+$GENERATE	100-239	$	IN	PTR	host$.wildfielded.site.
+240	IN	PTR	fort.wildfielded.site.
+241	IN	PTR	host241.wildfielded.site.
+242	IN	PTR	fortress.wildfielded.site.
+$GENERATE	243-249	$	IN	PTR	host$.wildfielded.site.
+250	IN	PTR	bastion.wildfielded.site.
+$GENERATE	251-255	$	IN	PTR	host$.wildfielded.site.
+
+; #########################################################################

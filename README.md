@@ -37,13 +37,17 @@ But they filesystems are identical (except of some logs, tmp-files, etc.)
 [**`/etc/rc.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/rc.conf) - rc.conf    
 [**`/etc/crontab`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/crontab) - Tasks for different servers    
 [**`/etc/newsyslog.conf_BFP`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/newsyslog.conf_BFP) - Do not forget file rotation (search this filename in /etc/crontab)    
-[**`/etc/syslog.conf_B`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/syslog.conf_B) - Logging for one external server
+[**`/etc/syslog.conf_B`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/syslog.conf_B) - Logging for one external server    
+[**`/usr/local/etc/rsync/rsyncd.conf_BFP`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/rsync/rsyncd.conf_BFP) - Modules set for periodic files synchronization via crontab    
 ----
-9. **Sendmail**... Yes, I can!    
-[**`/etc/mail/`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/mail) - All the given configs are only for one external server    
+9. **Bind**    
+[**`/usr/local/named/usr/local/etc/namedb/`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/named/usr/local/etc/namedb) - All the given configs are only for one external DNS-server with chrooted Bind    
+----
+10. **Sendmail**... Yes, I can!    
+[**`/etc/mail/`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/mail) - All the given configs are only for one external mail server    
 [**`/etc/mail/sentinel/sentinel.cf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/mail/sentinel/sentinel.cf) - Very old and simple mailfilter    
 ----
-10. Unsorted    
+11. Unsorted    
 [**`/etc/adduser.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/adduser.conf) - Template for adding simple mailuser    
 [**`/etc/devfs.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/devfs.conf) - For workstation and notebook    
 [**`/etc/fstab`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/fstab) - Add procfilesystem    

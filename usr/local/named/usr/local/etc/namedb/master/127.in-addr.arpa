@@ -1,0 +1,19 @@
+; #####=====----- 127.0.0.0/8 Reverse zone -----=====#####
+
+$TTL	10800
+$ORIGIN	127.in-addr.arpa.
+
+@	IN	SOA	localhost.	dnsmaster.localhost.	(
+			200		; Serial
+			86400		; Refresh (1d)
+			10800		; Retry (3h)
+			10886400	; Expire (18w)
+			10800		; Negative cache TTL (3h)
+			)
+
+@	IN	NS	localhost.
+1.0.0	IN	PTR	localhost.
+
+$GENERATE	2-255	$.0.0	IN	PTR	$.0.0.localhost.
+
+; #########################################################################
