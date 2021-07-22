@@ -1,0 +1,47 @@
+; #####=====----- WILDFIELDED.SITE zone Common Part -----=====#####
+
+$TTL	10800
+
+$ORIGIN	wildfielded.site.
+
+@	IN	SOA	ns.wildfielded.site.	dnsmaster.wildfielded.site.	(
+			2020062016	; Serial
+			86400		; Refresh (1d)
+			10800		; Retry (3h)
+			10886400	; Expire (18w)
+			10800		; Negative cache TTL (3h)
+			)
+
+@		IN	A	172.16.172.250
+		IN	NS	ns.wildfielded.site.
+		IN	NS	ns2.wildfielded.site.
+
+		IN	MX	20	mx1.wildfielded.site.
+		IN	MX	30	mx2.wildfielded.site.
+
+; ----- Localhost stuff -----
+localhost	IN	A	127.0.0.1
+bastion		IN	A	172.16.172.250
+		IN	MX	10	bastion.wildfielded.site.
+		IN	MX	20	fort.wildfielded.site.
+		IN	TXT	"v=spf1 a ip4:172.16.172.0/24 -all"
+ns		IN	A	172.16.172.250
+pop3		IN	A	172.16.172.250
+proxy		IN	A	172.16.172.250
+smtp		IN	A	172.16.172.250
+www		IN	A	172.16.172.250
+
+; ----- Hosts stuff -----
+fort		IN	A	172.16.172.240
+		IN	MX	10	fort.wildfielded.site.
+		IN	MX	20	bastion.wildfielded.site.
+		IN	TXT	"v=spf1 a ip4:172.16.172.0/24 -all"
+fortress	IN	A	172.16.172.242
+		IN	MX	10	fortress.wildfielded.site.
+		IN	MX	20	bastion.wildfielded.site.
+		IN	TXT	"v=spf1 a ip4:172.16.172.0/24 -all"
+ns2		IN	A	172.16.172.240
+
+; ----- Experimental stuff -----
+
+; #########################################################################

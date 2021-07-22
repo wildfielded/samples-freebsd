@@ -1,0 +1,23 @@
+; #####=====----- WILDFIELDED.SITE zone INTERNAL view -----=====#####
+
+$INCLUDE	/usr/local/etc/namedb/master/C.wildfielded.site
+
+@	IN	NS	bastionback.wildfielded.site.
+@	IN	NS	fortback.wildfielded.site.
+@	IN	TXT	"v=spf1 a mx ip4:10.10.0.0/16 ip4:172.31.0.0/20 ip4:172.16.172.0/18 ~all"
+
+; ----- Localhost stuff -----
+
+; ----- Hosts stuff -----
+bastionback	IN	A	172.31.172.250
+castle1		IN	A	192.168.192.122
+castle2		IN	A	192.168.192.123
+fortback	IN	A	172.31.172.240
+
+; ----- Routers stuff -----
+oldcisco1	IN	A	192.168.192.254
+oldcisco2	IN	A	192.168.192.253
+
+; ----- Experimental stuff -----
+
+; #########################################################################

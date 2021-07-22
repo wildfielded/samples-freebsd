@@ -3,7 +3,7 @@
 $TTL	10800
 $ORIGIN	172.16.172.in-addr.arpa.
 
-@	IN	SOA	wildfielded.site.	dnsmaster.wildfielded.site.	(
+@	IN	SOA	ns.wildfielded.site.	dnsmaster.wildfielded.site.	(
 			2029062014	; Serial
 			86400		; Refresh (1d)
 			10800		; Retry (3h)

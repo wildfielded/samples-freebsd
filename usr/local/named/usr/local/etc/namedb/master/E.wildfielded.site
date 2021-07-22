@@ -1,0 +1,15 @@
+; #####=====----- WILDFIELDED.SITE zone EXTERNAL view -----=====#####
+
+$INCLUDE	/usr/local/etc/namedb/master/C.wildfielded.site
+
+@	IN	TXT	"v=spf1 a mx ip4:172.16.128.0/18 -all"
+
+; ----- Localhost stuff -----
+
+; ----- Hosts stuff -----
+bastionp	IN	A	172.16.172.248
+fortp		IN	A	172.16.172.242
+
+; ----- Experimental stuff -----
+
+; #########################################################################

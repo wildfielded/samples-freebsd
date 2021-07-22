@@ -1,0 +1,17 @@
+; $FreeBSD: tags/RELEASE_11_0_0/dns/bind910/files/empty.db 340872 2014-01-24 00:14:07Z mat $
+
+$TTL	10800
+@	IN	SOA	@	dnsmaster.localhost.	(
+				200	; Serial
+				1d	; Refresh
+				3h	; Retry
+				18w	; Expire
+				3h	; Negative cache TTL
+				)
+
+@	IN	NS	@
+@	IN	A	127.0.0.1
+@	IN	PTR	empty.fake.domain.
+*	IN	PTR	empty.fake.domain.
+
+; #########################################################################
