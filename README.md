@@ -25,13 +25,16 @@ Based on my dummy experience.
 When you temporarily need FTP, TFTP, POP3 without particular daemons,    
 [**`/etc/inetd.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/inetd.conf) - this is for you.    
 ----
-7. **Build Kernel and World**    
+7. **Squid**    
+[**`/usr/local/etc/squid/squid.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/squid/squid.conf) - ACLs, logs, peering/sibling, how could we live without it?    
+----
+8. **Build Kernel and World**    
 [**`/etc/src.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/src.conf)    
 [**`/etc/src-env.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/src-env.conf)    
 [**`/etc/make.conf`**]() - For building custom system, custom kernel, and for custom ports    
 [**`/usr/src/sys/amd64/conf/BSDSRV`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/src/sys/amd64/conf/BSDSRV) - Kernel config for 11.2 (bare metal)    
 ----
-8. **One** image for **many** different servers    
+9. **One** image for **many** different servers    
 Let's suppose, for instance, that we have 5 servers with different functional (external - primary, secondary, tester; internal - primary, secondary).    
 But they filesystems are identical (except of some logs, tmp-files, etc.)    
 [**`/etc/rc.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/rc.conf) - rc.conf    
@@ -40,14 +43,14 @@ But they filesystems are identical (except of some logs, tmp-files, etc.)
 [**`/etc/syslog.conf_B`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/syslog.conf_B) - Logging for one external server    
 [**`/usr/local/etc/rsync/rsyncd.conf_BFP`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/rsync/rsyncd.conf_BFP) - Modules set for periodic files synchronization via crontab    
 ----
-9. **Bind**    
+10. **Bind**    
 [**`/usr/local/named/usr/local/etc/namedb/`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/named/usr/local/etc/namedb) - All the given configs are only for one external DNS-server with chrooted Bind    
 ----
-10. **Sendmail**... Yes, I can!    
+11. **Sendmail**... Yes, I can!    
 [**`/etc/mail/`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/mail) - All the given configs are only for one external mail server    
 [**`/etc/mail/sentinel/sentinel.cf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/mail/sentinel/sentinel.cf) - Very old and simple mailfilter    
 ----
-11. Unsorted    
+12. Unsorted    
 [**`/etc/adduser.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/adduser.conf) - Template for adding simple mailuser    
 [**`/etc/devfs.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/devfs.conf) - For workstation and notebook    
 [**`/etc/fstab`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/fstab) - Add procfilesystem    
