@@ -1,0 +1,289 @@
+// $FreeBSD: branches/2021Q1/dns/bind911/files/named.conf.in 443607 2017-06-14 22:54:43Z mat $
+// ###########################################################
+// #####=====----- Configured by Ded Wildfield -----=====#####
+// ###########################################################
+
+logging {
+	channel file_log {	file	"/var/log/named.log" versions 10 size 5m;
+				severity	debug;
+				print-severity	yes;
+				print-time	yes;
+				print-category	yes;
+	};
+	channel syslog_log {	syslog		user;
+				severity	debug;
+				print-severity	yes;
+				print-category	yes;
+	};
+	category default	{ file_log; syslog_log; };
+	category database	{ null; };
+	category resolver	{ null; };
+};
+
+include		"/usr/local/etc/namedb/rndc.key";
+
+controls {
+	inet 127.0.0.1 port 953 allow { localhost; } keys { rndc-key; };
+};
+
+acl DEADNETS {
+	0.0.0.0/8;
+	100.64.0.0/10;
+	169.254.0.0/16;
+	192.0.0.0/24;
+	192.0.2.0/24;
+	192.168.0.0/16;
+	198.18.0.0/15;
+	198.51.100.0/24;
+	203.0.113.0/24;
+	224.0.0.0/3;
+};
+
+acl INTRANET {
+	localhost;
+	localnets;
+	10.10.0.0/16;
+	172.16.172.80/28;
+};
+
+acl UP_NS {
+	176.99.13.11;
+	176.99.13.14;
+	194.58.117.16;
+	194.58.117.17;
+	194.67.73.75;
+};
+
+options {
+	allow-query		{ none; };
+	allow-recursion		{ none; };
+	allow-transfer		{ none; };
+	blackhole		{ DEADNETS; };
+	directory		"/usr/local/etc/namedb/working";
+	disable-empty-zone	"255.255.255.255.in-addr.arpa";
+	dump-file		"/var/dump/named_dump.db";
+	listen-on		port 53 { 127.0.0.1; 172.31.172.240/28; 172.16.172.128/25; };
+	pid-file		"/var/run/named/named.pid";
+	query-source		address * port *;
+	rrset-order {		class	IN type MX name "wildfielded.site" order random;
+				order	cyclic;
+	};
+	statistics-file		"/var/stats/named.stats";
+	version			none;
+};
+
+// #############################################
+// #####=====----- INTERNAL VIEW -----=====#####
+// #############################################
+view "INTERNAL" {
+	match-clients	{ INTRANET; };
+	allow-query	{ INTRANET; };
+	allow-recursion	{ INTRANET; };
+	allow-transfer	{ INTRANET; };
+// -------------------------------------------------
+// #####=====----- FUNDAMENTAL ZONES -----=====#####
+// -------------------------------------------------
+//	zone "." {
+//		type	hint;
+//		file	"../named.root";
+//	};
+	zone "." {
+		type			slave;
+		file			"../slave/roots";
+		masterfile-format	text;
+		masters 		{
+					192.0.32.132;
+					192.0.47.132;
+					};
+		notify			no;
+	};
+	zone "localhost" {
+		type	master;
+		file	"../master/localhost";
+		notify	no;
+	};
+	zone "arpa" {
+		type			slave;
+		file			"../slave/arpa";
+		masterfile-format	text;
+		masters			{
+					192.0.32.132;
+					192.0.47.132;
+					};
+		notify			no;
+	};
+	zone "in-addr.arpa" {
+		type			slave;
+		file			"../slave/in-addr.arpa";
+		masterfile-format	text;
+		masters			{
+					192.0.32.132;
+					192.0.47.132;
+					};
+		notify			no;
+	};
+	zone "127.in-addr.arpa" {
+		type	master;
+		file	"../master/127.in-addr.arpa";
+		notify	no;
+	};
+	zone "0.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "64.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "65.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "66.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "67.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "68.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "69.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "70.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "71.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "72.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "73.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "74.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "75.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "76.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "77.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "78.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "79.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "80.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "81.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "82.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "83.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "84.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "85.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "86.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "87.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "88.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "89.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "90.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "91.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "92.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "93.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "94.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "95.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "96.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "97.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "98.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "99.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "100.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "101.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "102.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "103.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "104.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "105.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "106.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "107.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "108.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "109.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "110.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "111.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "112.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "113.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "114.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "115.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "116.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "117.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "118.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "119.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "120.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "121.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "122.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "123.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "124.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "125.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "126.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "127.100.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "254.169.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "0.0.192.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "2.0.192.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "168.192.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "100.51.198.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "18.198.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "19.198.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "113.0.203.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "224.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "225.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "226.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "227.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "228.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "229.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "230.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "231.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "232.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "233.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "234.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "235.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "236.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "237.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "238.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "239.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "240.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "241.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "242.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "243.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "244.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "245.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "246.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "247.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "248.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "249.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "250.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "251.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "252.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "253.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "254.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+	zone "255.in-addr.arpa" { type master; file "../master/empty.PTR"; notify no; };
+// ----------------------------------------
+// #####=====----- UP ZONES -----=====#####
+// ----------------------------------------
+	zone "up" {
+		type		forward;
+		forward		only;
+		forwarders	{
+				172.16.172.245;
+				172.16.172.246;
+				172.16.172.247;
+				};
+	};
+// -------------------------------------------------
+// #####=====----- WILDFIELDED ZONES -----=====#####
+// -------------------------------------------------
+	zone "172.16.172.in-addr.arpa" {
+		type			slave;
+		file			"../slave/I.172.16.172.in-addr.arpa";
+		masterfile-format	text;
+		masters			{ 172.31.172.250; };
+		notify			no;
+	};
+	zone "wildfielded.site" {
+		type			slave;
+		file			"../slave/I.wildfielded.site";
+		masterfile-format	text;
+		masters			{ 172.31.172.250; };
+		notify			no;
+	};
+};
+
+// #############################################
+// #####=====----- EXTERNAL VIEW -----=====#####
+// #############################################
+view "EXTERNAL" {
+	match-clients	{ any; };
+	zone "172.16.172.in-addr.arpa" {
+		type			slave;
+		file			"../slave/E.172.16.172.in-addr.arpa";
+		masterfile-format	text;
+		masters			{ 172.16.172.250; };
+		allow-query		{ any; };
+		allow-transfer		{ INTRANET; UP_NS; };
+	};
+	zone "wildfielded.site" {
+		type			slave;
+		file			"../slave/E.wildfielded.site";
+		masterfile-format	text;
+		masters			{ 172.16.172.250; };
+		allow-query		{ any; };
+		allow-transfer		{ INTRANET; UP_NS; };
+	};
+};
+
+// ###########################################################################
