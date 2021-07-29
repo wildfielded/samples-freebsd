@@ -1,5 +1,5 @@
-# Configuration samples for FreeBSD
-Based on my dummy experience.
+# FreeBSD configuration samples    
+Based on my dummy experience.    
 1. Screen **text** mode    
 [**`/boot/loader.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/boot/loader.conf) - Console in text-mode    
 ----
@@ -59,4 +59,7 @@ When you temporarily need FTP, TFTP, POP3 without particular daemons,
 [**`/etc/fstab`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/fstab) - Add procfilesystem    
 [**`/etc/sysctl.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/sysctl.conf) - System tuning    
 [**`/usr/local/www/apache24/data/wpad.dat`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/www/apache24/data/wpad.dat) - Auto proxy configuration sample    
+----
+13. Shell scripting examples    
+[**`/root/bin/`**](https://github.com/wildfielded/samples-freebsd/blob/master/root/bin) - Has dedicated README.md    
 ----
