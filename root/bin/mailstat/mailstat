@@ -23,46 +23,46 @@ __FOOTER="${REPORT_DIR}/__footer"
 #####----- TMP_DIR clearance -----#####
 #######################################
 if [ -r "${TMP_DIR}" ] ; then
-   /bin/rm -rf ${TMP_DIR}
-   echo "${TMP_DIR} removed"
-   /bin/mkdir ${TMP_DIR}
-   echo "${TMP_DIR} created"
+    /bin/rm -rf ${TMP_DIR}
+    echo "${TMP_DIR} removed"
+    /bin/mkdir ${TMP_DIR}
+    echo "${TMP_DIR} created"
 else
-   /bin/mkdir ${TMP_DIR}
-   echo "${TMP_DIR} created"
+    /bin/mkdir ${TMP_DIR}
+    echo "${TMP_DIR} created"
 fi
 
 ######################################################
 #####----- Taking and pre-grepping log-file -----#####
 ######################################################
 /bin/cp -f "${MAIL_LOG}" "${DRAFT_LOG}.gz"
-   echo "Log copied, begin gunzip..."
+    echo "Log copied, begin gunzip..."
 /usr/bin/gunzip -f "${DRAFT_LOG}.gz"
-   echo "Log gunzipped, begin grep..."
+    echo "Log gunzipped, begin grep..."
 /bin/cat ${DRAFT_LOG} | /usr/bin/grep " sm\-kav\[" > "${DRAFT_LOG}.grep"
 
 MONTH=`/usr/bin/head -c 3 ${DRAFT_LOG}`
 case ${MONTH} in
-   Dec)
-      YEAR=`/bin/date -v-1y +"%Y"`
-   ;;
-   *)
-      YEAR=`/bin/date +"%Y"`
-   ;;
+    Dec)
+        YEAR=`/bin/date -v-1y +"%Y"`
+    ;;
+    *)
+        YEAR=`/bin/date +"%Y"`
+    ;;
 esac
 MONTH_DIR="${REPORT_DIR}/${YEAR}${MONTH}"
 
 ###################################################
 #####----- Mreporting and postprocessing -----#####
 ###################################################
-   echo "Log grepped, begin mreport..."
+    echo "Log grepped, begin mreport..."
 /usr/local/sbin/mreport -i ${DRAFT_LOG}.grep -o ${DRAFT_REPORT}
-   echo "Mreported, begin sedding..."
+    echo "Mreported, begin sedding..."
 /bin/cat ${DRAFT_REPORT} | \
-   /usr/bin/tr "[:upper:]" "[:lower:]" | \
-   /usr/bin/sed -e "s/^.*\[\ *//" | \
-   /usr/bin/sed -e "s/\]\ */\ /" | \
-   /usr/bin/grep -e "^[0-9]" > ${DRAFT_REPORT}.sed
+    /usr/bin/tr "[:upper:]" "[:lower:]" | \
+    /usr/bin/sed -e "s/^.*\[\ *//" | \
+    /usr/bin/sed -e "s/\]\ */\ /" | \
+    /usr/bin/grep -e "^[0-9]" > ${DRAFT_REPORT}.sed
 
 #############################################
 #####----- Per-user data spreading -----#####
@@ -72,50 +72,50 @@ ALL_OUT='0'
 ALL_NOT='0'
 for USER in ${USER_LIST}
 do
-   TOTAL_LOCAL_IN='0'
-   TOTAL_LOCAL_OUT='0'
-   TOTAL_UP_IN='0'
-   TOTAL_UP_OUT='0'
-   TOTAL_IN='0'
-   TOTAL_OUT='0'
-   while read COUNT BYTES SENDER RECIPIENT REST
-   do
-      if [ "${RECIPIENT}" = "${USER}@local.wildfielded.site" ] ; then
-         if [ `echo ${SENDER} | /usr/bin/grep 'local.wildfielded.site'` ] ; then
-            echo "${SENDER} ${COUNT} ${BYTES}" >> ${TMP_DIR}/${USER}.localin
-            TOTAL_LOCAL_IN=`expr ${TOTAL_LOCAL_IN} + ${BYTES}`
-            ALL_NOT=`expr ${ALL_NOT} + ${BYTES}`
-         elif [ `echo ${SENDER} | /usr/bin/grep 'up.wildfielded.site'` ] ; then
-            echo "${SENDER} ${COUNT} ${BYTES}" >> ${TMP_DIR}/${USER}.upin
-            TOTAL_UP_IN=`expr ${TOTAL_UP_IN} + ${BYTES}`
-            ALL_IN=`expr ${ALL_IN} + ${BYTES}`
-         else
-            echo "${SENDER} ${COUNT} ${BYTES}" >> ${TMP_DIR}/${USER}.allin
-            TOTAL_IN=`expr ${TOTAL_IN} + ${BYTES}`
-            ALL_IN=`expr ${ALL_IN} + ${BYTES}`
-         fi
-      fi
-      if [ "${SENDER}" = "${USER}@local.wildfielded.site" ] ; then
-         if [ `echo ${RECIPIENT} | /usr/bin/grep 'local.wildfielded.site'` ] ; then
-            echo "${RECIPIENT} ${COUNT} ${BYTES}" >> ${TMP_DIR}/${USER}.localout
-            TOTAL_LOCAL_OUT=`expr ${TOTAL_LOCAL_OUT} + ${BYTES}`
-         elif [ `echo ${RECIPIENT} | /usr/bin/grep 'up.wildfielded.site'` ] ; then
-            echo "${RECIPIENT} ${COUNT} ${BYTES}" >> ${TMP_DIR}/${USER}.upout
-            TOTAL_UP_OUT=`expr ${TOTAL_UP_OUT} + ${BYTES}`
-            ALL_OUT=`expr ${ALL_OUT} + ${BYTES}`
-         else
-            echo "${RECIPIENT} ${COUNT} ${BYTES}" >> ${TMP_DIR}/${USER}.allout
-            TOTAL_OUT=`expr ${TOTAL_IN} + ${BYTES}`
-            ALL_OUT=`expr ${ALL_OUT} + ${BYTES}`
-         fi
-      fi
-   done < ${DRAFT_REPORT}.sed
-   [ "${TOTAL_LOCAL_IN}" = "0" ] || echo "${TOTAL_LOCAL_IN}" > ${TMP_DIR}/${USER}.totallocalin
-   [ "${TOTAL_LOCAL_OUT}" = "0" ] || echo "${TOTAL_LOCAL_OUT}" > ${TMP_DIR}/${USER}.totallocalout
-   [ "${TOTAL_UP_IN}" = "0" ] || echo "${TOTAL_UP_IN}" > ${TMP_DIR}/${USER}.totalupin
-   [ "${TOTAL_UP_OUT}" = "0" ] || echo "${TOTAL_UP_OUT}" > ${TMP_DIR}/${USER}.totalupout
-   [ "${TOTAL_IN}" = "0" ] || echo "${TOTAL_IN}" > ${TMP_DIR}/${USER}.totalin
-   [ "${TOTAL_OUT}" = "0" ] || echo "${TOTAL_OUT}" > ${TMP_DIR}/${USER}.totalout
+    TOTAL_LOCAL_IN='0'
+    TOTAL_LOCAL_OUT='0'
+    TOTAL_UP_IN='0'
+    TOTAL_UP_OUT='0'
+    TOTAL_IN='0'
+    TOTAL_OUT='0'
+    while read COUNT BYTES SENDER RECIPIENT REST
+    do
+        if [ "${RECIPIENT}" = "${USER}@local.wildfielded.site" ] ; then
+            if [ `echo ${SENDER} | /usr/bin/grep 'local.wildfielded.site'` ] ; then
+                echo "${SENDER} ${COUNT} ${BYTES}" >> ${TMP_DIR}/${USER}.localin
+                TOTAL_LOCAL_IN=`expr ${TOTAL_LOCAL_IN} + ${BYTES}`
+                ALL_NOT=`expr ${ALL_NOT} + ${BYTES}`
+            elif [ `echo ${SENDER} | /usr/bin/grep 'up.wildfielded.site'` ] ; then
+                echo "${SENDER} ${COUNT} ${BYTES}" >> ${TMP_DIR}/${USER}.upin
+                TOTAL_UP_IN=`expr ${TOTAL_UP_IN} + ${BYTES}`
+                ALL_IN=`expr ${ALL_IN} + ${BYTES}`
+            else
+                echo "${SENDER} ${COUNT} ${BYTES}" >> ${TMP_DIR}/${USER}.allin
+                TOTAL_IN=`expr ${TOTAL_IN} + ${BYTES}`
+                ALL_IN=`expr ${ALL_IN} + ${BYTES}`
+            fi
+        fi
+        if [ "${SENDER}" = "${USER}@local.wildfielded.site" ] ; then
+            if [ `echo ${RECIPIENT} | /usr/bin/grep 'local.wildfielded.site'` ] ; then
+                echo "${RECIPIENT} ${COUNT} ${BYTES}" >> ${TMP_DIR}/${USER}.localout
+                TOTAL_LOCAL_OUT=`expr ${TOTAL_LOCAL_OUT} + ${BYTES}`
+            elif [ `echo ${RECIPIENT} | /usr/bin/grep 'up.wildfielded.site'` ] ; then
+                echo "${RECIPIENT} ${COUNT} ${BYTES}" >> ${TMP_DIR}/${USER}.upout
+                TOTAL_UP_OUT=`expr ${TOTAL_UP_OUT} + ${BYTES}`
+                ALL_OUT=`expr ${ALL_OUT} + ${BYTES}`
+            else
+                echo "${RECIPIENT} ${COUNT} ${BYTES}" >> ${TMP_DIR}/${USER}.allout
+                TOTAL_OUT=`expr ${TOTAL_IN} + ${BYTES}`
+                ALL_OUT=`expr ${ALL_OUT} + ${BYTES}`
+            fi
+        fi
+    done < ${DRAFT_REPORT}.sed
+    [ "${TOTAL_LOCAL_IN}" = "0" ] || echo "${TOTAL_LOCAL_IN}" > ${TMP_DIR}/${USER}.totallocalin
+    [ "${TOTAL_LOCAL_OUT}" = "0" ] || echo "${TOTAL_LOCAL_OUT}" > ${TMP_DIR}/${USER}.totallocalout
+    [ "${TOTAL_UP_IN}" = "0" ] || echo "${TOTAL_UP_IN}" > ${TMP_DIR}/${USER}.totalupin
+    [ "${TOTAL_UP_OUT}" = "0" ] || echo "${TOTAL_UP_OUT}" > ${TMP_DIR}/${USER}.totalupout
+    [ "${TOTAL_IN}" = "0" ] || echo "${TOTAL_IN}" > ${TMP_DIR}/${USER}.totalin
+    [ "${TOTAL_OUT}" = "0" ] || echo "${TOTAL_OUT}" > ${TMP_DIR}/${USER}.totalout
 done
 
 ######################################
@@ -139,13 +139,13 @@ echo '   </TR>' >> ${TABLER}
 #####----- MONTH_DIR creating -----#####
 ########################################
 if [ -r "${MONTH_DIR}" ] ; then
-   /bin/rm -rf ${MONTH_DIR}
-   echo "${MONTH_DIR} removed"
-   /bin/mkdir ${MONTH_DIR}
-   echo "${MONTH_DIR} created"
+    /bin/rm -rf ${MONTH_DIR}
+    echo "${MONTH_DIR} removed"
+    /bin/mkdir ${MONTH_DIR}
+    echo "${MONTH_DIR} created"
 else
-   /bin/mkdir ${MONTH_DIR}
-   echo "${MONTH_DIR} created"
+    /bin/mkdir ${MONTH_DIR}
+    echo "${MONTH_DIR} created"
 fi
 
 ########################################
@@ -170,141 +170,141 @@ echo '   </TR>' >> ${MONTH_DIR}/index.html
 ##########################################################
 for RUSER in ${USER_LIST}
 do
-   USER_IN='0'
-   USER_OUT='0'
-   USER_UP_IN='0'
-   USER_UP_OUT='0'
-   USER_LOCAL_IN='0'
-   USER_LOCAL_OUT='0'
-   [ -d "${MONTH_DIR}/${RUSER}" ] || /bin/mkdir ${MONTH_DIR}/${RUSER}
-   /bin/cp -f ${__HEADER} ${MONTH_DIR}/${RUSER}/index.html
-   echo "   <TH CLASS=\"title\">${MONTH} ${YEAR} Mail Statistics for <B><U>${RUSER}</U></B></TH>" >> ${MONTH_DIR}/${RUSER}/index.html
-   echo '</TABLE>' >> ${MONTH_DIR}/${RUSER}/index.html
-   echo '<TABLE CELLSPACING="2" CELLPADDING="1">' >> ${MONTH_DIR}/${RUSER}/index.html
-   if [ -r "${TMP_DIR}/${RUSER}.allin" ] ; then
-      echo '   <TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '      <TD CLASS="data2"><B>From</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '      <TD CLASS="external"><B>Count</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '      <TD CLASS="external"><B>Bytes</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-      while read ALLIN_FROM ALLIN_COUNT ALLIN_BYTES REST
-      do
-         echo '   <TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-         echo "      <TD CLASS=\"data2\">${ALLIN_FROM}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
-         echo "      <TD CLASS=\"external\">${ALLIN_COUNT}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
-         echo "      <TD CLASS=\"external\">${ALLIN_BYTES}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
-         echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-         USER_IN=`expr ${USER_IN} + ${ALLIN_BYTES}`
-      done < ${TMP_DIR}/${RUSER}.allin
-      echo '   <TR BGCOLOR="#FFFFDD">' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo "      <TD COLSPAN=\"3\"><B>Total from Internet: ${USER_IN} Bytes</B></TD>" >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-   fi
-   if [ -r "${TMP_DIR}/${RUSER}.allout" ] ; then
-      echo '   <TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '      <TD CLASS="data2"><B>To</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '      <TD CLASS="external"><B>Count</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '      <TD CLASS="external"><B>Bytes</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-      while read ALLOUT_TO ALLOUT_COUNT ALLOUT_BYTES REST
-      do
-         echo '   <TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-         echo "      <TD CLASS=\"data2\">${ALLOUT_TO}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
-         echo "      <TD CLASS=\"external\">${ALLOUT_COUNT}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
-         echo "      <TD CLASS=\"external\">${ALLOUT_BYTES}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
-         echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-         USER_OUT=`expr ${USER_OUT} + ${ALLOUT_BYTES}`
-      done < ${TMP_DIR}/${RUSER}.allout
-      echo '   <TR BGCOLOR="#FFFFDD">' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo "      <TD COLSPAN=\"3\"><B>Total to Internet: ${USER_OUT} Bytes</B></TD>" >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-   fi
-   if [ -r "${TMP_DIR}/${RUSER}.upin" ] ; then
-      echo '   <TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '      <TD CLASS="data2"><B>From</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '      <TD CLASS="up"><B>Count</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '      <TD CLASS="up"><B>Bytes</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-      while read UPIN_FROM UPIN_COUNT UPIN_BYTES REST
-      do
-         echo '   <TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-         echo "      <TD CLASS=\"data2\">${UPIN_FROM}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
-         echo "      <TD CLASS=\"up\">${UPIN_COUNT}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
-         echo "      <TD CLASS=\"up\">${UPIN_BYTES}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
-         echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-         USER_UP_IN=`expr ${USER_UP_IN} + ${UPIN_BYTES}`
-      done < ${TMP_DIR}/${RUSER}.upin
-      echo '   <TR BGCOLOR="#FFFFDD">' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo "      <TD COLSPAN=\"3\"><B>Total from ODU: ${USER_UP_IN} Bytes</B></TD>" >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-   fi
-   if [ -r "${TMP_DIR}/${RUSER}.upout" ] ; then
-      echo '   <TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '      <TD CLASS="data2"><B>To</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '      <TD CLASS="up"><B>Count</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '      <TD CLASS="up"><B>Bytes</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-      while read UPOUT_TO UPOUT_COUNT UPOUT_BYTES REST
-      do
-         echo '   <TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-         echo "      <TD CLASS=\"data2\">${UPOUT_TO}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
-         echo "      <TD CLASS=\"up\">${UPOUT_COUNT}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
-         echo "      <TD CLASS=\"odu\">${UPOUT_BYTES}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
-         echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-         USER_UP_OUT=`expr ${USER_UP_OUT} + ${UPOUT_BYTES}`
-      done < ${TMP_DIR}/${RUSER}.upout
-      echo '   <TR BGCOLOR="#FFFFDD">' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo "      <TD COLSPAN=\"3\"><B>Total to UP: ${USER_UP_OUT} Bytes</B></TD>" >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-   fi
-   if [ -r "${TMP_DIR}/${RUSER}.burin" ] ; then
-      echo '   <TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '      <TD CLASS="data2"><B>From</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '      <TD CLASS="local"><B>Count</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '      <TD CLASS="local"><B>Bytes</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-      while read LOCALIN_FROM LOCALIN_COUNT LOCALIN_BYTES REST
-      do
-         echo '   <TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-         echo "      <TD CLASS=\"data2\">${LOCALIN_FROM}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
-         echo "      <TD CLASS=\"local\">${LOCALIN_COUNT}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
-         echo "      <TD CLASS=\"local\">${LOCALIN_BYTES}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
-         echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-         USER_LOCAL_IN=`expr ${USER_LOCAL_IN} + ${LOCALIN_BYTES}`
-      done < ${TMP_DIR}/${RUSER}.localin
-      echo '   <TR BGCOLOR="#FFFFDD">' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo "      <TD COLSPAN=\"3\"><B>Total from LOCAL: ${USER_LOCAL_IN} Bytes</B></TD>" >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-   fi
-   if [ -r "${TMP_DIR}/${RUSER}.localout" ] ; then
-      echo '   <TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '      <TD CLASS="data2"><B>To</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '      <TD CLASS="local"><B>Count</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '      <TD CLASS="local"><B>Bytes</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-      while read LOCALOUT_TO LOCALOUT_COUNT LOCALOUT_BYTES REST
-      do
-         echo '   <TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-         echo "      <TD CLASS=\"data2\">${LOCALOUT_TO}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
-         echo "      <TD CLASS=\"rdu\">${LOCALOUT_COUNT}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
-         echo "      <TD CLASS=\"rdu\">${LOCALOUT_BYTES}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
-         echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-         USER_LOCAL_OUT=`expr ${USER_LOCAL_OUT} + ${LOCALOUT_BYTES}`
-      done < ${TMP_DIR}/${RUSER}.localout
-      echo '   <TR BGCOLOR="#FFFFDD">' >> ${MONTH_DIR}/${RUSER}/index.html
-      echo "      <TD COLSPAN=\"3\"><B>Total to RDU: ${USER_LOCAL_OUT} Bytes</B></TD>" >> ${MONTH_DIR}/${RUSER}/index.html
-      echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
-   fi
-   /bin/cat ${__FOOTER} >> ${MONTH_DIR}/${RUSER}/index.html
-   echo '   <TR>' >> ${MONTH_DIR}/index.html
-   echo "      <TD CLASS=\"data2\"><A HREF=\"${RUSER}/index.html\">${RUSER}</A></TD>" >> ${MONTH_DIR}/index.html
-   echo "      <TD CLASS=\"external\">${USER_IN}</TD>" >> ${MONTH_DIR}/index.html
-   echo "      <TD CLASS=\"external\">${USER_OUT}</TD>" >> ${MONTH_DIR}/index.html
-   echo "      <TD CLASS=\"up\">${USER_UP_IN}</TD>" >> ${MONTH_DIR}/index.html
-   echo "      <TD CLASS=\"up\">${USER_UP_OUT}</TD>" >> ${MONTH_DIR}/index.html
-   echo "      <TD CLASS=\"local\">${USER_LOCAL_IN}</TD>" >> ${MONTH_DIR}/index.html
-   echo "      <TD CLASS=\"local\">${USER_LOCAL_OUT}</TD>" >> ${MONTH_DIR}/index.html
-   echo '   </TR>' >> ${MONTH_DIR}/index.html
+    USER_IN='0'
+    USER_OUT='0'
+    USER_UP_IN='0'
+    USER_UP_OUT='0'
+    USER_LOCAL_IN='0'
+    USER_LOCAL_OUT='0'
+    [ -d "${MONTH_DIR}/${RUSER}" ] || /bin/mkdir ${MONTH_DIR}/${RUSER}
+    /bin/cp -f ${__HEADER} ${MONTH_DIR}/${RUSER}/index.html
+    echo "   <TH CLASS=\"title\">${MONTH} ${YEAR} Mail Statistics for <B><U>${RUSER}</U></B></TH>" >> ${MONTH_DIR}/${RUSER}/index.html
+    echo '</TABLE>' >> ${MONTH_DIR}/${RUSER}/index.html
+    echo '<TABLE CELLSPACING="2" CELLPADDING="1">' >> ${MONTH_DIR}/${RUSER}/index.html
+    if [ -r "${TMP_DIR}/${RUSER}.allin" ] ; then
+        echo '   <TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '      <TD CLASS="data2"><B>From</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '      <TD CLASS="external"><B>Count</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '      <TD CLASS="external"><B>Bytes</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+        while read ALLIN_FROM ALLIN_COUNT ALLIN_BYTES REST
+        do
+            echo '   <TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+            echo "      <TD CLASS=\"data2\">${ALLIN_FROM}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
+            echo "      <TD CLASS=\"external\">${ALLIN_COUNT}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
+            echo "      <TD CLASS=\"external\">${ALLIN_BYTES}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
+            echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+            USER_IN=`expr ${USER_IN} + ${ALLIN_BYTES}`
+        done < ${TMP_DIR}/${RUSER}.allin
+        echo '   <TR BGCOLOR="#FFFFDD">' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo "      <TD COLSPAN=\"3\"><B>Total from Internet: ${USER_IN} Bytes</B></TD>" >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+    fi
+    if [ -r "${TMP_DIR}/${RUSER}.allout" ] ; then
+        echo '   <TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '      <TD CLASS="data2"><B>To</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '      <TD CLASS="external"><B>Count</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '      <TD CLASS="external"><B>Bytes</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+        while read ALLOUT_TO ALLOUT_COUNT ALLOUT_BYTES REST
+        do
+            echo '   <TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+            echo "      <TD CLASS=\"data2\">${ALLOUT_TO}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
+            echo "      <TD CLASS=\"external\">${ALLOUT_COUNT}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
+            echo "      <TD CLASS=\"external\">${ALLOUT_BYTES}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
+            echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+            USER_OUT=`expr ${USER_OUT} + ${ALLOUT_BYTES}`
+        done < ${TMP_DIR}/${RUSER}.allout
+        echo '   <TR BGCOLOR="#FFFFDD">' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo "      <TD COLSPAN=\"3\"><B>Total to Internet: ${USER_OUT} Bytes</B></TD>" >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+    fi
+    if [ -r "${TMP_DIR}/${RUSER}.upin" ] ; then
+        echo '   <TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '      <TD CLASS="data2"><B>From</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '      <TD CLASS="up"><B>Count</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '      <TD CLASS="up"><B>Bytes</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+        while read UPIN_FROM UPIN_COUNT UPIN_BYTES REST
+        do
+            echo '   <TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+            echo "      <TD CLASS=\"data2\">${UPIN_FROM}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
+            echo "      <TD CLASS=\"up\">${UPIN_COUNT}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
+            echo "      <TD CLASS=\"up\">${UPIN_BYTES}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
+            echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+            USER_UP_IN=`expr ${USER_UP_IN} + ${UPIN_BYTES}`
+        done < ${TMP_DIR}/${RUSER}.upin
+        echo '   <TR BGCOLOR="#FFFFDD">' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo "      <TD COLSPAN=\"3\"><B>Total from ODU: ${USER_UP_IN} Bytes</B></TD>" >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+    fi
+    if [ -r "${TMP_DIR}/${RUSER}.upout" ] ; then
+        echo '   <TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '      <TD CLASS="data2"><B>To</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '      <TD CLASS="up"><B>Count</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '      <TD CLASS="up"><B>Bytes</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+        while read UPOUT_TO UPOUT_COUNT UPOUT_BYTES REST
+        do
+            echo '   <TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+            echo "      <TD CLASS=\"data2\">${UPOUT_TO}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
+            echo "      <TD CLASS=\"up\">${UPOUT_COUNT}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
+            echo "      <TD CLASS=\"odu\">${UPOUT_BYTES}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
+            echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+            USER_UP_OUT=`expr ${USER_UP_OUT} + ${UPOUT_BYTES}`
+        done < ${TMP_DIR}/${RUSER}.upout
+        echo '   <TR BGCOLOR="#FFFFDD">' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo "      <TD COLSPAN=\"3\"><B>Total to UP: ${USER_UP_OUT} Bytes</B></TD>" >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+    fi
+    if [ -r "${TMP_DIR}/${RUSER}.burin" ] ; then
+        echo '   <TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '      <TD CLASS="data2"><B>From</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '      <TD CLASS="local"><B>Count</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '      <TD CLASS="local"><B>Bytes</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+        while read LOCALIN_FROM LOCALIN_COUNT LOCALIN_BYTES REST
+        do
+            echo '   <TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+            echo "      <TD CLASS=\"data2\">${LOCALIN_FROM}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
+            echo "      <TD CLASS=\"local\">${LOCALIN_COUNT}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
+            echo "      <TD CLASS=\"local\">${LOCALIN_BYTES}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
+            echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+            USER_LOCAL_IN=`expr ${USER_LOCAL_IN} + ${LOCALIN_BYTES}`
+        done < ${TMP_DIR}/${RUSER}.localin
+        echo '   <TR BGCOLOR="#FFFFDD">' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo "      <TD COLSPAN=\"3\"><B>Total from LOCAL: ${USER_LOCAL_IN} Bytes</B></TD>" >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+    fi
+    if [ -r "${TMP_DIR}/${RUSER}.localout" ] ; then
+        echo '   <TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '      <TD CLASS="data2"><B>To</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '      <TD CLASS="local"><B>Count</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '      <TD CLASS="local"><B>Bytes</B></TD>' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+        while read LOCALOUT_TO LOCALOUT_COUNT LOCALOUT_BYTES REST
+        do
+            echo '   <TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+            echo "      <TD CLASS=\"data2\">${LOCALOUT_TO}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
+            echo "      <TD CLASS=\"rdu\">${LOCALOUT_COUNT}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
+            echo "      <TD CLASS=\"rdu\">${LOCALOUT_BYTES}</TD>" >> ${MONTH_DIR}/${RUSER}/index.html
+            echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+            USER_LOCAL_OUT=`expr ${USER_LOCAL_OUT} + ${LOCALOUT_BYTES}`
+        done < ${TMP_DIR}/${RUSER}.localout
+        echo '   <TR BGCOLOR="#FFFFDD">' >> ${MONTH_DIR}/${RUSER}/index.html
+        echo "      <TD COLSPAN=\"3\"><B>Total to RDU: ${USER_LOCAL_OUT} Bytes</B></TD>" >> ${MONTH_DIR}/${RUSER}/index.html
+        echo '   </TR>' >> ${MONTH_DIR}/${RUSER}/index.html
+    fi
+    /bin/cat ${__FOOTER} >> ${MONTH_DIR}/${RUSER}/index.html
+    echo '   <TR>' >> ${MONTH_DIR}/index.html
+    echo "      <TD CLASS=\"data2\"><A HREF=\"${RUSER}/index.html\">${RUSER}</A></TD>" >> ${MONTH_DIR}/index.html
+    echo "      <TD CLASS=\"external\">${USER_IN}</TD>" >> ${MONTH_DIR}/index.html
+    echo "      <TD CLASS=\"external\">${USER_OUT}</TD>" >> ${MONTH_DIR}/index.html
+    echo "      <TD CLASS=\"up\">${USER_UP_IN}</TD>" >> ${MONTH_DIR}/index.html
+    echo "      <TD CLASS=\"up\">${USER_UP_OUT}</TD>" >> ${MONTH_DIR}/index.html
+    echo "      <TD CLASS=\"local\">${USER_LOCAL_IN}</TD>" >> ${MONTH_DIR}/index.html
+    echo "      <TD CLASS=\"local\">${USER_LOCAL_OUT}</TD>" >> ${MONTH_DIR}/index.html
+    echo '   </TR>' >> ${MONTH_DIR}/index.html
 done
 
 ########################################
