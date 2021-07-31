@@ -10,7 +10,7 @@ if [ -z "${source_rc_confs_defined}" ] ; then
     fi
 fi
 
-##### When provider binds fixed MAC to link
+##### When a provider binds fixed MAC on its PE
 if [ "${GATEWAY}" = "PROV2" ] ; then
     /sbin/ifconfig vlan100 link 00:ab:c1:d2:e3:f4
 fi

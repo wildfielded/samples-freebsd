@@ -1,5 +1,6 @@
 # FreeBSD configuration samples    
 Based on my dummy experience.    
+It should be keep in mind that here are not only files ready for work, but also assemblies from different cases as references.    
 1. **loader.conf**    
 [**`/boot/loader.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/boot/loader.conf)    
 - Console in text-mode    
@@ -56,7 +57,9 @@ When you temporarily need FTP, TFTP, POP3 without particular daemons,
 [**`/etc/mail/sentinel/sentinel.cf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/mail/sentinel/sentinel.cf) - Very old and simple mailfilter    
 ----
 13. **PPPoE** uplinks configuration    
-[**`/etc/ppp/`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/ppp) - Configs for 2 providers (not simultaneously).    
+[**`/etc/ppp/`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/ppp) - Configs for 2 providers (Primary or Secondary, not simultaneously)    
+[**`/etc/rc.conf_PPPoE`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/rc.conf_PPPoE) - PPPoE-related additions to **rc.conf**    
+[**`/etc/start_if.vlan100`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/start_if.vlan100) - When a provider binds a specific MAC-address on its equipment    
 ----
 14. Unsorted    
 [**`/etc/adduser.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/adduser.conf) - Template for adding simple mailuser    
