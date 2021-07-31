@@ -1,0 +1,9 @@
+#####=====----- Configured by Ded Wildfield -----=====#####
+
+provider1:
+    add! default HISADDR
+
+provider2:
+    add! default HISADDR
+
+###########################################################################

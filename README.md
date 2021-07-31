@@ -1,9 +1,11 @@
 # FreeBSD configuration samples    
 Based on my dummy experience.    
-1. Screen **text** mode    
-[**`/boot/loader.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/boot/loader.conf) - Console in text-mode    
+1. **loader.conf**    
+[**`/boot/loader.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/boot/loader.conf)    
+- Console in text-mode    
+- jme NIC driver has some bugs    
 ----
-2. **cshrc**    
+2. **.cshrc**    
 [**`/root/.cshrc`**](https://github.com/wildfielded/samples-freebsd/blob/master/root/.cshrc)    
 [**`/usr/home/ded/.cshrc`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/home/ded/.cshrc) - Some useful tuning, when working in **tcsh**    
 ----
@@ -53,13 +55,13 @@ When you temporarily need FTP, TFTP, POP3 without particular daemons,
 [**`/etc/mail/`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/mail) - All the given configs are only for one external mail server    
 [**`/etc/mail/sentinel/sentinel.cf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/mail/sentinel/sentinel.cf) - Very old and simple mailfilter    
 ----
-12. Unsorted    
+13. **PPPoE** uplinks configuration    
+[**`/etc/ppp/`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/ppp) - Configs for 2 providers (not simultaneously).    
+----
+14. Unsorted    
 [**`/etc/adduser.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/adduser.conf) - Template for adding simple mailuser    
 [**`/etc/devfs.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/devfs.conf) - For workstation and notebook    
 [**`/etc/fstab`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/fstab) - Add procfilesystem    
 [**`/etc/sysctl.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/sysctl.conf) - System tuning    
 [**`/usr/local/www/apache24/data/wpad.dat`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/www/apache24/data/wpad.dat) - Auto proxy configuration sample    
-----
-13. Shell scripting examples    
-[**`/root/bin/`**](https://github.com/wildfielded/samples-freebsd/blob/master/root/bin) - Has dedicated README.md    
 ----
