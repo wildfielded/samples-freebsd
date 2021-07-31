@@ -1,0 +1,42 @@
+#####=====----- PPPoE adds -----=====#####
+
+GATEWAY="PROV1"		# We use primary provider's channel
+# GATEWAY="PROV2"	# and switch on  Secondary provider's line
+
+##### Default parameters
+ppp_enable="NO"
+ppp_program="/usr/sbin/ppp"
+ppp_mode="ddial"
+ppp_nat="NO"
+ppp_profile=""
+ppp_user="root"
+
+##### This can be added to files in /etc/rc.conf.d/
+case ${GATEWAY} in
+    PROV1)
+        ifconfig_jme1="inet 192.168.1.254/27"
+        defaultrouter="192.168.172.253"
+        gateway_enable="YES"
+        ppp_enable="YES"
+        ppp_profile="provider1"
+        firewall_type="GATEWAY1"
+        firewall_nat_enable="YES"
+        firewall_nat_flags="same_ports unreg_only reset"
+    ;;
+    PROV2)
+        ifconfig_jme1="inet 192.168.1.254/27"
+        vlans_jme1="vlan100"
+        create_args_vlan100="vlan 100"
+        ifconfig_vlan100="inet 192.168.100.248/30"
+        defaultrouter="192.168.172.253"
+        gateway_enable="YES"
+        ppp_enable="YES"
+        ppp_profile="provider2"
+        firewall_type="GATEWAY2"
+        firewall_nat_enable="YES"
+        firewall_nat_flags="same_ports unreg_only reset"
+    ;;
+    *)
+    ;;
+
+###########################################################################
