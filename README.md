@@ -1,6 +1,6 @@
 # FreeBSD configuration samples    
-Based on my dummy experience.    
 It should be keep in mind that here are not only files ready for work, but also assemblies from different cases as references.    
+Based on my dummy experience.    
 1. **loader.conf**    
 [**`/boot/loader.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/boot/loader.conf)    
 - Console in text-mode    
