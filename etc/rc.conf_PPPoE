@@ -1,7 +1,7 @@
 #####=====----- PPPoE adds -----=====#####
 
 GATEWAY="PROV1"		# We use primary provider's channel
-# GATEWAY="PROV2"	# and switch on  Secondary provider's line
+# GATEWAY="PROV2"	# and can switch on Secondary provider's line
 
 ##### Default parameters
 ppp_enable="NO"

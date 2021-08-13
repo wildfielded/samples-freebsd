@@ -4,7 +4,7 @@ Based on my dummy experience.
 1. **loader.conf**    
 [**`/boot/loader.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/boot/loader.conf)    
 - Console in text-mode    
-- jme NIC driver has some bugs    
+- jme driver has some bugs on particular hardware    
 ----
 2. **.cshrc**    
 [**`/root/.cshrc`**](https://github.com/wildfielded/samples-freebsd/blob/master/root/.cshrc)    
@@ -40,8 +40,9 @@ But they filesystems are identical (except of some logs, tmp-files, etc.)
 [**`/etc/ssh/sshd_config`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/ssh/sshd_config) - It works    
 ----
 8. **Inetd** sweet **Inetd** =)    
-When you temporarily need FTP, TFTP, POP3 without particular daemons,    
+When you urgently temporarily need FTP, RSH, TFTP, POP3 without third-party daemons,    
 [**`/etc/inetd.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/inetd.conf) - this is for you.    
+[**`/etc/pam.d/rsh`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/pam.d/rsh) - One line changed for root's remote shell
 ----
 9. **Squid**    
 [**`/usr/local/etc/squid/squid.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/squid/squid.conf) - ACLs, logs, peering/sibling, how could we live without it?    
