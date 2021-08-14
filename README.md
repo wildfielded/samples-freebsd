@@ -63,13 +63,15 @@ When you urgently temporarily need FTP, RSH, TFTP, POP3 without third-party daem
 [**`/etc/start_if.vlan100`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/start_if.vlan100) - When a provider binds a specific MAC-address on its equipment    
 ----
 14. **RADIUS/TACACS+** experiments    
-[**`/usr/local/etc/raddb`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/raddb) - Works as is. Some adds can be found in **`rc.conf`** and **`syslog.conf`**
-[**`/usr/local/etc/tac_plus.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/tac_plus.conf) - As well
+[**`/usr/local/etc/raddb`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/raddb) - Works as is. Some adds can be found in **`rc.conf`** and **`syslog.conf`**    
+[**`/usr/local/etc/tac_plus.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/tac_plus.conf) - As well    
 ----
 15. Unsorted    
 [**`/etc/adduser.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/adduser.conf) - Template for adding simple mailuser    
 [**`/etc/devfs.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/devfs.conf) - For workstation and notebook    
 [**`/etc/fstab`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/fstab) - Add procfilesystem    
 [**`/etc/sysctl.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/sysctl.conf) - System tuning    
+[**`/usr/local/etc/cvsupfile`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/cvsupfile) - Oldschool way to get sources tree for upgrade    
+[**`/usr/local/etc/cvsupports`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/cvsupports) - Oldschool way to get ports tree for upgrade    
 [**`/usr/local/www/apache24/data/wpad.dat`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/www/apache24/data/wpad.dat) - Auto proxy configuration sample    
 ----

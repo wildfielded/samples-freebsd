@@ -1,0 +1,21 @@
+#####=====----- Configured by Ded Wildfield -----=====#####
+
+# *default	host=cvsup.ru.freebsd.org
+*default	host=cvsup2.ru.freebsd.org
+# *default	host=cvsup3.ru.freebsd.org
+# *default	host=cvsup4.ru.freebsd.org
+# *default	host=cvsup5.ru.freebsd.org
+# *default	host=cvsup6.ru.freebsd.org
+# *default	host=cvsup7.ru.freebsd.org
+*default	base=/var/db
+*default	prefix=/usr
+*default	release=cvs
+*default	delete
+*default	use-rel-suffix
+*default	compress
+*default	tag=RELENG_9_0_0_RELEASE
+# *default	tag=RELENG_9	##### STABLE
+
+src-all
+
+###########################################################################
