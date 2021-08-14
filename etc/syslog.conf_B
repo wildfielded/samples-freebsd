@@ -43,6 +43,8 @@ uucp.=notice					/var/log/backup/backup
 uucp.=notice					@fort.wildfielded.site
 uucp.=err					/var/log/backup/backup
 uucp.=err					@fort.wildfielded.site
+##### local1.*					/var/log/tacacs/tacacs
+##### local1.=info					/var/log/tacacs/tacaccounting
 
 #####=====----- FORT logs -----=====#####
 +fort
@@ -81,6 +83,8 @@ uucp.=err					/var/log/backup/backup
 *.*						/var/log/ftp/proftpd
 !named
 *.*						/var/log/named/named
+##### !tac_plus
+##### *.=info						/var/log/tacacs/tacaccounting
 
 !*
 

@@ -8,17 +8,17 @@ Based on my dummy experience.
 ----
 2. **.cshrc**    
 [**`/root/.cshrc`**](https://github.com/wildfielded/samples-freebsd/blob/master/root/.cshrc)    
-[**`/usr/home/ded/.cshrc`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/home/ded/.cshrc) - Some useful tuning, when working in **tcsh**    
+[**`/usr/home/ded/.cshrc`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/home/ded/.cshrc) - Some useful tuning, when working in **`tcsh`**    
 ----
 3. **Locale**    
 [**`/root/.login_conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/root/.login_conf)    
 [**`/usr/home/ded/.login_conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/home/ded/.login_conf) - Setting up KOI8-R locale    
 ----
 4. **Proxy** configuration    
-[**`/root/.subversion/servers`**](https://github.com/wildfielded/samples-freebsd/blob/master/root/.subversion/servers) - For **svn**    
-[**`/usr/local/etc/pkg.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/pkg.conf) - For **pkg**    
-[**`/etc/csh.cshrc`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/csh.cshrc) - System-wide config for **csh**    
-[**`/etc/profile`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/profile) - System-wide config for **sh**    
+[**`/root/.subversion/servers`**](https://github.com/wildfielded/samples-freebsd/blob/master/root/.subversion/servers) - For **`svn`**    
+[**`/usr/local/etc/pkg.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/pkg.conf) - For **`pkg`**    
+[**`/etc/csh.cshrc`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/csh.cshrc) - System-wide config for **`csh`**    
+[**`/etc/profile`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/profile) - System-wide config for **`sh`**    
 ----
 5. **Build Kernel and World**    
 [**`/etc/src.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/src.conf)    
@@ -59,10 +59,13 @@ When you urgently temporarily need FTP, RSH, TFTP, POP3 without third-party daem
 ----
 13. **PPPoE** uplinks configuration    
 [**`/etc/ppp/`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/ppp) - Configs for 2 providers (Primary or Secondary, not simultaneously)    
-[**`/etc/rc.conf_PPPoE`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/rc.conf_PPPoE) - PPPoE-related additions to **rc.conf**    
+[**`/etc/rc.conf_PPPoE`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/rc.conf_PPPoE) - PPPoE-related additions to **`rc.conf`**    
 [**`/etc/start_if.vlan100`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/start_if.vlan100) - When a provider binds a specific MAC-address on its equipment    
 ----
-14. Unsorted    
+14. **TACACS+** experiments    
+[**`/usr/local/etc/tac_plus.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/tac_plus.conf) - Works as is. Some adds can be found in **`rc.conf`** and **`syslog.conf`**
+----
+15. Unsorted    
 [**`/etc/adduser.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/adduser.conf) - Template for adding simple mailuser    
 [**`/etc/devfs.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/devfs.conf) - For workstation and notebook    
 [**`/etc/fstab`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/fstab) - Add procfilesystem    
