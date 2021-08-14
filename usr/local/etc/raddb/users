@@ -1,0 +1,27 @@
+#####=====----- Configured by sTALK_specTrum -----=====#####
+
+t1user	Cleartext-Password := password123
+	Reply-Message = "---=== ACCESS GRANTED !!! ===---"
+
+wifitest	Cleartext-Password := wifi123
+	Reply-Message = "Hello, %{User-Name}"
+
+##### Permit any user regardless of password #####
+DEFAULT	Auth-Type := Accept
+	Reply-Message = "Hello, %{User-Name}"
+
+##### DEFAULT	Auth-Type = System
+#####	Fall-Through = Yes
+
+DEFAULT	Framed-Protocol == PPP
+	Framed-Protocol = PPP,
+	Framed-Compression = Van-Jacobson-TCP-IP
+
+DEFAULT	Hint == "CSLIP"
+	Framed-Protocol = SLIP,
+	Framed-Compression = Van-Jacobson-TCP-IP
+
+DEFAULT	Hint == "SLIP"
+	Framed-Protocol = SLIP
+
+###########################################################################

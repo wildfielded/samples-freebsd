@@ -43,6 +43,7 @@ uucp.=notice					/var/log/backup/backup
 uucp.=notice					@fort.wildfielded.site
 uucp.=err					/var/log/backup/backup
 uucp.=err					@fort.wildfielded.site
+##### local0.*					/var/log/radius/radius
 ##### local1.*					/var/log/tacacs/tacacs
 ##### local1.=info					/var/log/tacacs/tacaccounting
 
