@@ -69,6 +69,7 @@ When you urgently temporarily need FTP, RSH, TFTP, POP3 without third-party daem
 15. Unsorted    
 [**`/etc/adduser.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/adduser.conf) - Template for adding simple mailuser    
 [**`/etc/devfs.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/devfs.conf) - For workstation and notebook    
+[**`/etc/devfs.rules`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/devfs.rules) - Experiment fo **`bpf`**    
 [**`/etc/fstab`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/fstab) - Add procfilesystem    
 [**`/etc/sysctl.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/sysctl.conf) - System tuning    
 [**`/usr/local/etc/cvsupfile`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/cvsupfile) - Oldschool way to get sources tree for upgrade    

@@ -1,0 +1,10 @@
+#####=====----- Configured by Ded Wildfield for AAABSD -----=====#####
+
+[devfsrules_bpf=5]
+add path 'bpf*' unhide
+add path 'bpf*' mode 0666
+
+[devfsrules_bpf_includes=6]
+add include $devfsrules_bpf
+
+###########################################################################
