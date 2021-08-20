@@ -1,5 +1,5 @@
 #!/bin/sh -
-#####=====----- Configured by sTALK_specTrum -----=====#####
+#####=====----- Configured by Ded Wildfield -----=====#####
 
 if [ -z "${source_rc_confs_defined}" ] ; then
     if [ -r /etc/defaults/rc.conf ] ; then
@@ -39,13 +39,35 @@ ${fwcmd} -f queue flush
 #########################################
 #####=====----- VARIABLES -----=====#####
 #########################################
+ADMIN_NET='10.10.10.0/24'
 
 #######################################
 #####=====----- DEFAULT -----=====#####
 #######################################
 setup_loopback
 
+    #---------- Control privileged traffic ----------#
+${fwcmd} add 30120 allow ip from ${ADMIN_NET} to any
+    #---------- ICMP and UDP control ----------#
+${fwcmd} add 60000 allow icmp from any to any icmptypes 0,3,4,8,11
+${fwcmd} add 62000 allow udp from any to any 123 keep-state
+    #---------- Allow all established connections ----------#
+${fwcmd} add 64000 allow tcp from any to any established
+
 case ${firewall_type} in
+#######################################
+#####=====----- BASTION -----=====#####
+#######################################
+    [Bb][Aa][Ss][Tt][Ii][Oo][Nn])
+    #---------- Denial from Internet ----------#
+${fwcmd} add 38100 deny tcp from any to 172.16.172.240/28 21,22,80,587,873,2222
+${fwcmd} add 38200 deny udp from any to 172.16.172.240/28 69,514,36348
+    #---------- DNS control ----------#
+${fwcmd} add 43100 allow udp from any to any 53 keep-state
+${fwcmd} add 43150 allow udp from any 53 to any keep-state
+${fwcmd} add 43200 allow tcp from any to any 53 keep-state
+${fwcmd} add 43250 allow tcp from any 53 to any keep-state
+    ;;
 ####################################
 #####=====----- OPEN -----=====#####
 ####################################
@@ -53,5 +75,10 @@ case ${firewall_type} in
         ${fwcmd} add 65500 allow ip from any to any
     ;;
 esac
+
+    #---------- The Final Cut ----------#
+${fwcmd} add 65520 deny tcp from any to any 21-25
+${fwcmd} add 65530 deny tcp from any to any 135,443,445
+${fwcmd} add 65534 deny log ip from any to any
 
 ###########################################################################

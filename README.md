@@ -35,38 +35,41 @@ But they filesystems are identical (except of some logs, tmp-files, etc.)
 [**`/etc/syslog.conf_B`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/syslog.conf_B) - Logging for one external server    
 [**`/usr/local/etc/rsync/rsyncd.conf_BFP`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/rsync/rsyncd.conf_BFP) - Modules set for periodic files synchronization via crontab    
 ----
-7. **SSH**    
+7. Firewall (**ipfw**)    
+[**`/etc/rc.fw`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/rc.fw) - Something for references (creepy censored)    
+----
+8. **SSH**    
 [**`/etc/ssh/ssh_config`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/ssh/ssh_config) - +Old ssh clients and Git accounts    
 [**`/etc/ssh/sshd_config`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/ssh/sshd_config) - It works    
 ----
-8. **Inetd** sweet **Inetd** =)    
+9. **Inetd** sweet **Inetd** =)    
 When you urgently temporarily need FTP, RSH, TFTP, POP3 without third-party daemons,    
 [**`/etc/inetd.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/inetd.conf) - this is for you.    
 [**`/etc/pam.d/rsh`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/pam.d/rsh) - One line changed for root's remote shell
 ----
-9. **Squid**    
+10. **Squid**    
 [**`/usr/local/etc/squid/squid.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/squid/squid.conf) - ACLs, logs, peering/sibling, how could we live without it?    
 ----
-10. **Bind**    
+11. **Bind**    
 [**`/usr/local/named/usr/local/etc/namedb/`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/named/usr/local/etc/namedb) - All the given configs are only for one external DNS-server with chrooted Bind    
 ----
-11. **Apache**    
+12. **Apache**    
 [**`/usr/local/etc/apache24/`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/apache24) - Nothing special, just work.    
 ----
-12. **Sendmail**... Yes, I can!    
+13. **Sendmail**... Yes, I can!    
 [**`/etc/mail/`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/mail) - All the given configs are only for one external mail server    
 [**`/etc/mail/sentinel/sentinel.cf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/mail/sentinel/sentinel.cf) - Very old and simple mailfilter    
 ----
-13. **PPPoE** uplinks configuration    
+14. **PPPoE** uplinks configuration    
 [**`/etc/ppp/`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/ppp) - Configs for 2 providers (Primary or Secondary, not simultaneously)    
 [**`/etc/rc.conf_PPPoE`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/rc.conf_PPPoE) - PPPoE-related additions to **`rc.conf`**    
 [**`/etc/start_if.vlan100`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/start_if.vlan100) - When a provider binds a specific MAC-address on its equipment    
 ----
-14. **RADIUS/TACACS+** experiments    
+15. **RADIUS/TACACS+** experiments    
 [**`/usr/local/etc/raddb`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/raddb) - Works as is. Some adds can be found in **`rc.conf`** and **`syslog.conf`**    
 [**`/usr/local/etc/tac_plus.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/tac_plus.conf) - As well    
 ----
-15. Unsorted    
+16. Unsorted    
 [**`/etc/adduser.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/adduser.conf) - Template for adding simple mailuser    
 [**`/etc/devfs.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/devfs.conf) - For workstation and notebook    
 [**`/etc/devfs.rules`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/devfs.rules) - Experiment fo **`bpf`**    
