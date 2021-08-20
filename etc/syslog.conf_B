@@ -63,6 +63,8 @@ uucp.=notice					/var/log/backup/backup
 uucp.=err					/var/log/backup/backup
 
 #####=====----- Network equipment logs -----=====#####
++cisco
+*.*						/var/log/cisco/cisco
 
 #####=====----- Servers logs -----=====#####
 

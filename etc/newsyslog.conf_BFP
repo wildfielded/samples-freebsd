@@ -36,6 +36,9 @@
 /var/log/security/mail_all		600	10	5000	*	JC
 /var/log/security/security_all		600	10	5000	*	JC
 
+#####=====----- Network equipment logs -----=====#####
+/var/log/cisco/cisco			644	13	*	$M1D0	JC
+
 <include> /etc/newsyslog.conf.d/*
 <include> /usr/local/etc/newsyslog.conf.d/*
 
