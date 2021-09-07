@@ -68,7 +68,7 @@ options {
 	directory		"/usr/local/etc/namedb/working";
 	disable-empty-zone	"255.255.255.255.in-addr.arpa";
 	dump-file		"/var/dump/named_dump.db";
-	listen-on		port 53 { 127.0.0.1; 172.31.172.240/28; 178.16.172.128/25; };
+	listen-on		port 53 { 127.0.0.1; 172.31.172.240/28; 172.16.172.128/25; };
 	pid-file		"/var/run/named/named.pid";
 	query-source		address * port *;
 	rrset-order {		class	IN type MX name "wildfielded.site" order random;

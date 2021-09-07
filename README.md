@@ -51,17 +51,17 @@ When you urgently temporarily need FTP, RSH, TFTP, POP3 without third-party daem
 [**`/usr/local/etc/squid/squid.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/squid/squid.conf) - ACLs, logs, peering/sibling, how could we live without it?    
 ----
 11. **Bind**    
-[**`/usr/local/named/usr/local/etc/namedb/`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/named/usr/local/etc/namedb) - All the given configs are only for one external DNS-server with chrooted Bind    
+[**`/usr/local/named/usr/local/etc/namedb/`**](https://github.com/wildfielded/samples-freebsd/tree/master/usr/local/named/usr/local/etc/namedb) - All the given configs are only for one external DNS-server with chrooted Bind    
 ----
 12. **Apache**    
-[**`/usr/local/etc/apache24/`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/apache24) - Nothing special, just work.    
+[**`/usr/local/etc/apache24/`**](https://github.com/wildfielded/samples-freebsd/tree/master/usr/local/etc/apache24) - Nothing special, just work.    
 ----
 13. **Sendmail**... Yes, I can!    
-[**`/etc/mail/`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/mail) - All the given configs are only for one external mail server    
+[**`/etc/mail/`**](https://github.com/wildfielded/samples-freebsd/tree/master/etc/mail) - All the given configs are only for one external mail server    
 [**`/etc/mail/sentinel/sentinel.cf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/mail/sentinel/sentinel.cf) - Very old and simple mailfilter    
 ----
 14. **PPPoE** uplinks configuration    
-[**`/etc/ppp/`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/ppp) - Configs for 2 providers (Primary or Secondary, not simultaneously)    
+[**`/etc/ppp/`**](https://github.com/wildfielded/samples-freebsd/tree/master/etc/ppp) - Configs for 2 providers (Primary or Secondary, not simultaneously)    
 [**`/etc/rc.conf_PPPoE`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/rc.conf_PPPoE) - PPPoE-related additions to **`rc.conf`**    
 [**`/etc/start_if.vlan100`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/start_if.vlan100) - When a provider binds a specific MAC-address on its equipment    
 ----
