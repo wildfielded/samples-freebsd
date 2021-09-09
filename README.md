@@ -4,7 +4,7 @@ Based on my dummy experience.
 1. **loader.conf**    
 [**`/boot/loader.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/boot/loader.conf)    
 - Console in text-mode    
-- jme driver has some bugs on particular hardware    
+- jme(4) driver has some bugs on particular hardware    
 ----
 2. **.cshrc**    
 [**`/root/.cshrc`**](https://github.com/wildfielded/samples-freebsd/blob/master/root/.cshrc)    
@@ -23,17 +23,17 @@ Based on my dummy experience.
 5. **Build Kernel and World**    
 [**`/etc/src.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/src.conf)    
 [**`/etc/src-env.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/src-env.conf)    
-[**`/etc/make.conf`**]() - For building custom system, custom kernel, and for custom ports    
+[**`/etc/make.conf`**]() - For building custom system, custom kernel, and custom ports    
 [**`/usr/src/sys/amd64/conf/BSDSRV`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/src/sys/amd64/conf/BSDSRV) - Kernel config for 11.2 (bare metal)    
 ----
 6. **One** image for **many** different servers    
 Let's suppose, for instance, that we have 5 servers with different functional (external - primary, secondary, tester; internal - primary, secondary).    
 But they filesystems are identical (except of some logs, tmp-files, etc.)    
-[**`/etc/rc.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/rc.conf) - rc.conf    
+[**`/etc/rc.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/rc.conf) - Main config    
 [**`/etc/crontab`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/crontab) - Tasks for different servers    
 [**`/etc/newsyslog.conf_BFP`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/newsyslog.conf_BFP) - Do not forget file rotation (search this filename in /etc/crontab)    
 [**`/etc/syslog.conf_B`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/syslog.conf_B) - Logging for one external server    
-[**`/usr/local/etc/rsync/rsyncd.conf_BFP`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/rsync/rsyncd.conf_BFP) - Modules set for periodic files synchronization via crontab    
+[**`/usr/local/etc/rsync/rsyncd.conf_BFP`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/rsync/rsyncd.conf_BFP) - Modules set for periodic files synchronization via cron    
 ----
 7. Firewall (**ipfw**)    
 [**`/etc/rc.fw`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/rc.fw) - Something for references (creepy censored)    
@@ -60,16 +60,19 @@ When you urgently temporarily need FTP, RSH, TFTP, POP3 without third-party daem
 [**`/etc/mail/`**](https://github.com/wildfielded/samples-freebsd/tree/master/etc/mail) - All the given configs are only for one external mail server    
 [**`/etc/mail/sentinel/sentinel.cf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/mail/sentinel/sentinel.cf) - Very old and simple mailfilter    
 ----
-14. **PPPoE** uplinks configuration    
+14. **MRTG**    
+[**`/usr/local/etc/mrtg/mrtg.cfg`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/mrtg/mrtg.cfg) - Config sample    
+----
+15. **PPPoE** uplinks configuration    
 [**`/etc/ppp/`**](https://github.com/wildfielded/samples-freebsd/tree/master/etc/ppp) - Configs for 2 providers (Primary or Secondary, not simultaneously)    
 [**`/etc/rc.conf_PPPoE`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/rc.conf_PPPoE) - PPPoE-related additions to **`rc.conf`**    
 [**`/etc/start_if.vlan100`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/start_if.vlan100) - When a provider binds a specific MAC-address on its equipment    
 ----
-15. **RADIUS/TACACS+** experiments    
+16. **RADIUS/TACACS+** experiments    
 [**`/usr/local/etc/raddb`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/raddb) - Works as is. Some adds can be found in **`rc.conf`** and **`syslog.conf`**    
 [**`/usr/local/etc/tac_plus.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/tac_plus.conf) - As well    
 ----
-16. Unsorted    
+17. Unplugged    
 [**`/etc/adduser.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/adduser.conf) - Template for adding simple mailuser    
 [**`/etc/devfs.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/devfs.conf) - For workstation and notebook    
 [**`/etc/devfs.rules`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/devfs.rules) - Experiment fo **`bpf`**    
