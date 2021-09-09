@@ -60,19 +60,22 @@ When you urgently temporarily need FTP, RSH, TFTP, POP3 without third-party daem
 [**`/etc/mail/`**](https://github.com/wildfielded/samples-freebsd/tree/master/etc/mail) - All the given configs are only for one external mail server    
 [**`/etc/mail/sentinel/sentinel.cf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/mail/sentinel/sentinel.cf) - Very old and simple mailfilter    
 ----
-14. **MRTG**    
+14. **ProFTPd** replaces generic **`ftpd`**    
+[**`/usr/local/etc/proftpd/proftpd.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/proftpd/proftpd.conf) - Just anonymous access    
+----
+15. **MRTG**    
 [**`/usr/local/etc/mrtg/mrtg.cfg`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/mrtg/mrtg.cfg) - Config sample    
 ----
-15. **PPPoE** uplinks configuration    
+16. **PPPoE** uplinks configuration    
 [**`/etc/ppp/`**](https://github.com/wildfielded/samples-freebsd/tree/master/etc/ppp) - Configs for 2 providers (Primary or Secondary, not simultaneously)    
 [**`/etc/rc.conf_PPPoE`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/rc.conf_PPPoE) - PPPoE-related additions to **`rc.conf`**    
 [**`/etc/start_if.vlan100`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/start_if.vlan100) - When a provider binds a specific MAC-address on its equipment    
 ----
-16. **RADIUS/TACACS+** experiments    
+17. **RADIUS/TACACS+** experiments    
 [**`/usr/local/etc/raddb`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/raddb) - Works as is. Some adds can be found in **`rc.conf`** and **`syslog.conf`**    
 [**`/usr/local/etc/tac_plus.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/tac_plus.conf) - As well    
 ----
-17. Unplugged    
+18. Unplugged    
 [**`/etc/adduser.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/adduser.conf) - Template for adding simple mailuser    
 [**`/etc/devfs.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/devfs.conf) - For workstation and notebook    
 [**`/etc/devfs.rules`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/devfs.rules) - Experiment fo **`bpf`**    
