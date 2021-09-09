@@ -83,5 +83,6 @@ When you urgently temporarily need FTP, RSH, TFTP, POP3 without third-party daem
 [**`/etc/sysctl.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/sysctl.conf) - System tuning    
 [**`/usr/local/etc/cvsupfile`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/cvsupfile) - Oldschool way to get sources tree for upgrade    
 [**`/usr/local/etc/cvsupports`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/cvsupports) - Oldschool way to get ports tree for upgrade    
+[**`/usr/local/etc/pkgtools.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/pkgtools.conf) - Some adds in default file for pleasure    
 [**`/usr/local/www/apache24/data/wpad.dat`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/www/apache24/data/wpad.dat) - Auto proxy configuration sample    
 ----
