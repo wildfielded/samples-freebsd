@@ -1,0 +1,48 @@
+Content-language: en
+Content-type: text/html; charset=UTF-8
+Body:----------en--
+<!--#set var="TITLE" value="Object not found!" -->
+<!--#include virtual="include/top.html" -->
+
+The requested URL was not found on this server.
+
+<!--#if expr="-n v('HTTP_REFERER')" -->
+
+The link on the
+<a href="<!--#echo encoding="url" var="HTTP_REFERER" -->">referring
+page</a> seems to be wrong or outdated. Please inform the author of
+<a href="<!--#echo encoding="url" var="HTTP_REFERER" -->">that page</a>
+about the error.
+
+<!--#else -->
+
+If you entered the URL manually please check your
+spelling and try again.
+
+<!--#endif -->
+
+<!--#include virtual="include/bottom.html" -->
+----------en--
+
+Content-language: ru
+Content-type: text/html; charset=KOI8-R
+Body:----------ru--
+<!--#set var="TITLE" value="Облом! (404 Not Found)" -->
+<!--#include virtual="include/top.html" -->
+
+Запрошенная УРЛа не найдена.
+
+<!--#if expr="-n v('HTTP_REFERER')" -->
+
+На <a href="<!--#echo encoding="url" var="HTTP_REFERER" -->">предыдущей странице</a> битая гиперссылка.
+Или кривая УРЛа, или всё устарело.
+Если есть непреодолимое желание, сообщи автору <a href="<!--#echo encoding="url" var="HTTP_REFERER" -->">всего этого</a> про косяк.
+
+<!--#else -->
+
+Если набивал адресок сам, выпрями пальцы и запытайся ещё раз.
+
+<!--#endif -->
+
+<!--#include virtual="include/bottom.html" -->
+----------ru--

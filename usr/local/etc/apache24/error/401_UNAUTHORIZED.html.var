@@ -1,0 +1,31 @@
+Content-language: en
+Content-type: text/html; charset=ISO-8859-1
+Body:----------en--
+<!--#set var="TITLE" value="Authentication required!" -->
+<!--#include virtual="include/top.html" -->
+
+This server could not verify that you are authorized to access the URL "<!--#echo encoding="url" var="REDIRECT_URL" -->".
+You either supplied the wrong credentials (e.g., bad password), or your browser doesn't understand how to supply the credentials required.
+
+<!--#include virtual="include/spacer.html" -->
+
+In case you are allowed to request the document, please check your user-id and password and try again.
+
+<!--#include virtual="include/bottom.html" -->
+----------en--
+
+Content-language: ru
+Content-type: text/html; charset=KOI8-R
+Body:----------ru--
+<!--#set var="TITLE" value="Ишь чего захотел! (401 Unauthorized)" -->
+<!--#include virtual="include/top.html" -->
+
+Я решил, что тебе не положено заходить на "<!--#echo encoding="url" var="REDIRECT_URL" -->".
+Ты, паря-девка, лоханулся с паролем, или твоя Тормозилла как-то криво это делает.
+
+<!--#include virtual="include/spacer.html" -->
+
+Если же тебе действительно позволено зайти сюда, тогда пальцы выпрямляй, когда пароль набиваешь.
+
+<!--#include virtual="include/bottom.html" -->
+----------ru--

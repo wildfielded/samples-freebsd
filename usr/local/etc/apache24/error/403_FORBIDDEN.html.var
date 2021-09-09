@@ -1,0 +1,41 @@
+Content-language: en
+Content-type: text/html; charset=ISO-8859-1
+Body:----------en--
+<!--#set var="TITLE" value="Access forbidden!" -->
+<!--#include virtual="include/top.html" -->
+
+<!--#if expr="$REDIRECT_URL = /\/$/" -->
+
+You don't have permission to access the requested directory.
+There is either no index document or the directory is read-protected.
+
+<!--#else -->
+
+You don't have permission to access the requested object.
+It is either read-protected or not readable by the server.
+
+<!--#endif -->
+
+<!--#include virtual="include/bottom.html" -->
+----------en--
+
+Content-language: ru
+Content-type: text/html; charset=KOI8-R
+Body:----------ru--
+<!--#set var="TITLE" value="Фиг тебе! (403 Forbidden)" -->
+<!--#include virtual="include/top.html" -->
+
+<!--#if expr="$REDIRECT_URL = /\/$/" -->
+
+У тебя нет прав доступа в эту директорию.
+Или нет индексного файла, или директория закрыта для чтения.
+
+<!--#else -->
+
+У тебя нет прав доступа к запрошенному объекту.
+Он или закрыт для чтения, или полностью закрыт даже для меня.
+
+<!--#endif -->
+
+<!--#include virtual="include/bottom.html" -->
+----------ru--

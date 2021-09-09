@@ -1,0 +1,21 @@
+Content-language: en
+Content-type: text/html; charset=ISO-8859-1
+Body:----------en--
+<!--#set var="TITLE" value="Bad request!" -->
+<!--#include virtual="include/top.html" -->
+
+Your browser (or proxy) sent a request that this server could not understand.
+
+<!--#include virtual="include/bottom.html" -->
+----------en--
+
+Content-language: ru
+Content-type: text/html; charset=KOI8-R
+Body:----------ru--
+<!--#set var="TITLE" value="Кривой запрос! (400 Bad request)" -->
+<!--#include virtual="include/top.html" -->
+
+Я не понял запрос, который послала твоя Тормозилла (или прокси).
+
+<!--#include virtual="include/bottom.html" -->
+----------ru--
