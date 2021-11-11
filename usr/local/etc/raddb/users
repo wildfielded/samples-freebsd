@@ -1,4 +1,4 @@
-#####=====----- Configured by sTALK_specTrum -----=====#####
+#####=====----- Configured by Ded Wildfield -----=====#####
 
 t1user	Cleartext-Password := password123
 	Reply-Message = "---=== ACCESS GRANTED !!! ===---"
