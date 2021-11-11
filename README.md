@@ -74,11 +74,14 @@ When you urgently temporarily need FTP, RSH, TFTP, POP3 without third-party daem
 [**`/etc/rc.conf_PPPoE`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/rc.conf_PPPoE) - PPPoE-related additions to **`rc.conf`**    
 [**`/etc/start_if.vlan100`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/start_if.vlan100) - When a provider binds a specific MAC-address on its equipment    
 ----
-17. **RADIUS/TACACS+** experiments    
+17. **DHCP** experiments    
+[**`/usr/local/etc/dhcpd`**](https://github.com/wildfielded/samples-freebsd/tree/master/usr/local/etc/dhcpd) - Something works, something doesn't.    
+----
+18. **RADIUS/TACACS+** experiments    
 [**`/usr/local/etc/raddb`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/raddb) - Works as is. Some adds can be found in **`rc.conf`** and **`syslog.conf`**    
 [**`/usr/local/etc/tac_plus.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/usr/local/etc/tac_plus.conf) - As well    
 ----
-18. Unplugged    
+19. Unplugged    
 [**`/etc/adduser.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/adduser.conf) - Template for adding simple mailuser    
 [**`/etc/devfs.conf`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/devfs.conf) - For workstation and notebook    
 [**`/etc/devfs.rules`**](https://github.com/wildfielded/samples-freebsd/blob/master/etc/devfs.rules) - Experiment fo **`bpf`**    
