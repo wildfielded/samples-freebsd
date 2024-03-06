@@ -2,6 +2,7 @@
 #
 # System-wide .profile file for sh(1).
 
+#####=====----- Example for access through Proxy with authorization -----=====#####
 FTP_PROXY=http://UNIXproxyuser:password123@192.168.192.168:3128
 export FTP_PROXY
 HTTP_PROXY=http://UNIXproxyuser:password123@192.168.192.168:3128
