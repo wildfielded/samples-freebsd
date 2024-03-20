@@ -31,48 +31,48 @@ Host                    sshbuser.github.com
     IdentityFile        ~/.ssh/rsa_sshbuser
 
 #####=====----- Works with almost all my cases -----=====#####
-Host					*
-    AddressFamily			inet
-    BatchMode				no
-    ChallengeResponseAuthentication	yes
-    CheckHostIP				yes
-    ClearAllForwardings			yes
-    Compression				yes
-    ConnectionAttempts			1
-    ConnectTimeout			86400
-    ControlMaster			auto
-    ControlPath				none
-    EnableSSHKeysign			no
-    EscapeChar				none
-    ExitOnForwardFailure		no
-    ForwardAgent			no
-    ForwardX11				no
-    ForwardX11Trusted			no
-    GatewayPorts			no
-    GSSAPIAuthentication		no
-    GSSAPIDelegateCredentials		no
-    HashKnownHosts			no
-    HostbasedAuthentication		no
-    IdentitiesOnly			no
-    KbdInteractiveAuthentication	yes
-    LogLevel				INFO
-    NumberOfPasswordPrompts		2
-    PasswordAuthentication		yes
-    PermitLocalCommand			no
-    Port				22
-    PreferredAuthentications		publickey,keyboard-interactive,password
-    Protocol				2,1
-    ProxyCommand			none
-    PubkeyAuthentication		yes
-    RekeyLimit				1G 1h
-    StrictHostKeyChecking		ask
-    TCPKeepAlive			yes
-    Tunnel				no
-    TunnelDevice			any:any
-    UsePrivilegedPort			no
-    UserKnownHostsFile			~/.ssh/known_hosts
-    VerifyHostKeyDNS			no
-    VersionAddendum			bI6AHTA-20201010
-    VisualHostKey			no
+Host                                *
+    AddressFamily                   inet
+    BatchMode                       no
+    ChallengeResponseAuthentication yes
+    CheckHostIP                     yes
+    ClearAllForwardings             yes
+    Compression                     yes
+    ConnectionAttempts              1
+    ConnectTimeout                  86400
+    ControlMaster                   auto
+    ControlPath                     none
+    EnableSSHKeysign                no
+    EscapeChar                      none
+    ExitOnForwardFailure            no
+    ForwardAgent                    no
+    ForwardX11                      no
+    ForwardX11Trusted               no
+    GatewayPorts                    no
+    GSSAPIAuthentication            no
+    GSSAPIDelegateCredentials       no
+    HashKnownHosts                  no
+    HostbasedAuthentication         no
+    IdentitiesOnly                  no
+    KbdInteractiveAuthentication    yes
+    LogLevel                        INFO
+    NumberOfPasswordPrompts         2
+    PasswordAuthentication          yes
+    PermitLocalCommand              no
+    Port                            22
+    PreferredAuthentications        publickey,keyboard-interactive,password
+    Protocol                        2,1
+    ProxyCommand                    none
+    PubkeyAuthentication            yes
+    RekeyLimit                      1G 1h
+    StrictHostKeyChecking           ask
+    TCPKeepAlive                    yes
+    Tunnel                          no
+    TunnelDevice                    any:any
+    UsePrivilegedPort               no
+    UserKnownHostsFile              ~/.ssh/known_hosts
+    VerifyHostKeyDNS                no
+    VersionAddendum                 bI6AHTA-20201010
+    VisualHostKey                   no
 
 ###########################################################################
