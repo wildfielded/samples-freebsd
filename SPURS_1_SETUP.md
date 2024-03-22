@@ -30,7 +30,6 @@
 
 На основании информации из `/usr/ports/Mk/bsd.port.mk` последовательность команд
 при установке любого порта (многие из них можно пропустить):
-
 ```shell
 make config
 make config-recursive
@@ -49,6 +48,14 @@ make
 make install
 make clean
 make clean-depends
+```
+
+Ещё некоторые можно применять при переустановке/обновлении:
+```shell
+make showconfig
+make showconfig-recursive
+make reinstall
+make deinstall
 ```
 
 [:arrow_up: Содержание](#содержание)
