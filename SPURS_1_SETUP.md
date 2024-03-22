@@ -41,6 +41,14 @@ make fetch-recursive-list
 make fetch-recursive
 make checksum
 make checksum-recursive
+make extract
+make patch
+make configure
+make build
+make
+make install
+make clean
+make clean-depends
 ```
 
 [:arrow_up: Содержание](#содержание)
