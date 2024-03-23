@@ -74,6 +74,10 @@
 - **`lang/perl5.34`** (версия меняется в зависимости от релиза)
 - **`shells/bash`**
 - **`lang/python3.9`** (версия меняется в зависимости от релиза)
+- **`databases/py-gdbm`** (для полноты установки Python Standard Library)
+- **`databases/py-sqlite3`** (для полноты установки Python Standard Library)
+- **`x11-toolkits/py-tkinter`** (для полноты установки Python Standard Library)
+- **`devel/py-pip`** (для полноты установки Python)
 - **`www/lynx`** (для &laquo;рендеринга&raquo; HTML в Midnight Commander)
 - **`ftp/curl`**
 - **`misc/mc`**
