@@ -81,6 +81,7 @@
 - **`www/lynx`** (для &laquo;рендеринга&raquo; HTML в Midnight Commander)
 - **`ftp/curl`**
 - **`misc/mc`**
+- **`x11/luit`** (для работы по SSH с разными локалями)
 
 `[:arrow_up: Содержание](#содержание)
 
