@@ -26,8 +26,16 @@
 рабочего ядра в `/usr/src/sys/amd64/conf/SERVER`.
 
 3. :arrow_right: Очистка от файлов предыдущих сборок:
-    ```shell
+
+    ```sh
         rm -rvdf /usr/obj/*
+    ```
+
+4. :arrow_right: Сборка мира:
+
+    ```sh
+        cd /usr/src
+        make buildworld
     ```
 
 ----
