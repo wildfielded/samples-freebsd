@@ -53,6 +53,19 @@
         make installkernel KERNCONF=BASTION
     ```
 
+6. :arrow_right: В случае появления новых системных пользователей и групп:
+
+    ```sh
+        mergemaster -p
+    ```
+
+7. :arrow_right: Установка собранной системы:
+
+    ```sh
+        cd /usr/src
+        make installworld
+    ```
+
 ----
 
 ## Пакетный менеджер **`pkg`** ##
