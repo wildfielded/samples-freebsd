@@ -19,7 +19,12 @@
 если требуются особые условия, заданные в `/etc/make.conf`, `/etc/src.conf`,
 `/etc/src-env.conf`.
 
-1. :arrow_right: Размещение исходников в `/usr/src`.
+1. :arrow_right: Размещение исходников в `/usr/src`. Раньше можно было взять
+через `subversion`, например:
+
+    ```sh
+        svn checkout https://svn.freebsd.org/base/release/12.2.0 /var/tmp/src
+    ```
 
 2. :arrow_right: Анализ `/usr/src/UPDATING`, внесение требуемых параметров в
 `/etc/make.conf`, `/etc/src.conf`, `/etc/src-env.conf`. Подготовка конфигурации
