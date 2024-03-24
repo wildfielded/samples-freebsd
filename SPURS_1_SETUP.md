@@ -28,7 +28,7 @@
 
 2. :arrow_right: Анализ `/usr/src/UPDATING`, внесение требуемых параметров в
 `/etc/make.conf`, `/etc/src.conf`, `/etc/src-env.conf`. Подготовка конфигурации
-рабочего ядра в `/usr/src/sys/amd64/conf/SERVER`.
+рабочего ядра в `/usr/src/sys/amd64/conf/BASTION`.
 
 3. :arrow_right: Очистка от файлов предыдущих сборок:
 
@@ -40,7 +40,17 @@
 
     ```sh
         cd /usr/src
-        make buildworld
+        make -j 4 buildworld
+    ```
+5. :arrow_right: Сборка и установка дефолтного и рабочего ядер
+
+    ```sh
+        cd /usr/src
+        nake buildkernel KERNCONF=GENERIC
+        make installkernel KERNCONF=GENERIC
+        cp -rvp /boot/kernel/* /boot/kernel.GENERIC/
+        make buildkernel KERNCONF=BASTION
+        make installkernel KERNCONF=BASTION
     ```
 
 ----
