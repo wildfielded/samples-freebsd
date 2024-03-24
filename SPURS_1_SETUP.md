@@ -66,6 +66,22 @@
         make installworld
     ```
 
+8. Для любителей хардкора&nbsp;&mdash; генерация новых дефолтных системных
+конфигурационных файлов и вдумчивый ручной "merging":
+
+    ```sh
+        cd /usr/src/etc
+        make DESTDIR=/var/tmp/root distrib-dirs distribution
+    ```
+
+    Либо для ленивых просто:
+
+    ```sh
+        mergemaster -iF
+    ```
+
+    Ещё большой вопрос&nbsp;&mdash; что менее трудозатратно.
+
 ----
 
 ## Пакетный менеджер **`pkg`** ##
