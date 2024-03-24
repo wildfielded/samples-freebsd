@@ -82,11 +82,19 @@
 
     Ещё большой вопрос&nbsp;&mdash; что менее трудозатратно.
 
-9. :arrow_right: Удаление ненужных старых файлов:
+9. :arrow_right: Удаление ненужных старых файлов и перезагрузка системы:
 
     ```sh
         cd /usr/src
         make delete-old
+        shutdown -r now
+    ```
+
+10. :arrow_right: Удаление ненужных старых библиотек:
+
+    ```sh
+        cd /usr/src
+        make delete-old-libs
     ```
 
 ----
