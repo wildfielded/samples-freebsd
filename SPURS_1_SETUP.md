@@ -122,6 +122,8 @@
 ```shell
     cd /usr/ports
     make index
+    # Если не сработает
+    make fetchindex
 ```
 
 На основании информации из `/usr/ports/Mk/bsd.port.mk` последовательность команд
